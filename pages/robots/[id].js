@@ -1,59 +1,68 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
-import Loader from "@/components/Loader";
+import styles from "@/styles/DisplayRobot.module.scss";
+import LongRunner from "@/components/LongRunner";
 
-const InitialState = {
-  attributes: [],
-  external_url: "",
-  image: "",
-  name: "",
+const fetchDummy = async () => {
+  // create a promise that resolves after 1 second
+  const promise = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ name: "Dummy", image: "https://i.imgur.com/3ZQ3X9M.png" });
+    }, 1000);
+  });
+
+  return promise;
 };
 
-const DisplayRobot = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [robot, setRobot] = useState(InitialState);
+const DisplayRobot = ({ robot }) => {
+  const [dummy, setDummy] = useState(null);
+  const [dummy2, setDummy2] = useState(null);
+  const [dummy3, setDummy3] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    if (!id) return;
-    fetch(`https://sportsbot.rollbit.com/metadata/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRobot(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
-  }, [id]);
+    async function doAThing() {
+      const { data, otherData } = await fetchDummy();
+      setDummy2(data);
+      setDummy3(otherData);
+    }
 
-  if (loading) return <Loader loading={loading} />;
+    doAThing();
+  }, []);
 
   return (
-    <div>
+    <div className={styles.robot_container}>
       <h1>{robot.name}</h1>
-
       <Image
         priority
         src={robot.image}
         alt={robot.name}
-        width={300}
-        height={300}
+        width={350}
+        height={350}
       />
-      {robot.attributes?.map((attribute) => (
-        <div key={attribute.trait_type}>
-          <h3>{attribute.trait_type}</h3>
-          <p>{attribute.value}</p>
-        </div>
-      ))}
+      <div className={styles.robot_info}>
+        {robot.attributes?.map((attribute) => (
+          <div key={attribute.trait_type}>
+            <h3>{attribute.trait_type}</h3>
+            <p>{attribute.value}</p>
+          </div>
+        ))}
+      </div>
+      <LongRunner />
     </div>
   );
 };
 
 export default DisplayRobot;
+
+export const getServerSideProps = async (ctx) => {
+  const id = ctx.query.id;
+  const robot = await fetch(
+    `https://sportsbot.rollbit.com/metadata/${id}`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      robot,
+    },
+  };
+};
