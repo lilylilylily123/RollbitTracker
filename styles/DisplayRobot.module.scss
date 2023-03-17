@@ -170,3 +170,41 @@
   font-size: 1rem;
   font-family: 'Questrial', sans-serif;
 }
+
+
+@media (max-width: 768px) {
+  .robot_container {
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+  .robot_stats {
+    gap: 4px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+  }
+  .robot_stats_title {
+    font-size: 1.2rem;
+    display: flex;
+  }
+  .robot_stats_body {
+    border-left: none;
+    border-top: #3B3E50 dashed 1px;
+    flex-direction: row;
+    padding-top: 5%;
+    flex-wrap: wrap;
+    //width: 80vw;
+    gap: 6px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4vw;
+    margin-right: 4vw;
+  }
+  .stats_data {
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+    padding: 3vw;
+  }
+}
