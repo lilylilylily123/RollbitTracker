@@ -1,37 +1,38 @@
 .loader {
-  position: absolute;
-  top: calc(50% - 110px / 2);
-  left: calc(50% - 110px / 2);
-  border: 24px solid #FFF;
-  border-radius: 50%;
-  box-sizing: border-box;
-  animation: eat 1s linear infinite;
+  color: white;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  animation : rotate 4s linear infinite;
 }
-.loader::after , .loader::before {
-  content: '';
+.loader:before,
+.loader:after {
+  content:"";
+  display: block;
+  border: 24px solid;
+  border-color: transparent transparent #fff  #fff;
   position: absolute;
-  left: 50px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  opacity: 0;
-  animation: move 2s linear infinite;
+  left: 0;
+  top: 0;
+  animation: mvx 1s infinite ease-in;
+}
+.loader:before {
+  left: -1px;
+  top: 1px;
+  border-color:#FF3D00  #FF3D00 transparent transparent;
+  animation-name:mvrx;
 }
 
-.loader::before {
-  animation-delay: 1s;
+@keyframes rotate {
+  100% {transform: rotate(360deg)}
 }
-
-@keyframes eat {
-  0% , 49% { border-right-color: #FFF }
-  50% , 100% { border-right-color: #0000 }
+@keyframes mvx {
+  0% , 15% {transform: translate(0 , 0) rotate(0deg)}
+  50% {transform: translate(-50% , 50%) rotate(180deg)}
+  100% {transform: translate(0% , 0%) rotate(180deg)}
 }
-@keyframes move {
-  0% { left: 75px ; opacity: 1}
-  50% { left: 0px; opacity: 1 }
-  52%, 100% { left: -5px; opacity: 0; }
+@keyframes mvrx {
+  0% , 15%  {transform: translate(0 , 0) rotate(0deg)}
+  50% {transform: translate(50% , -50%) rotate(180deg)}
+  100% {transform: translate(0% , 0%) rotate(180deg)}
 }

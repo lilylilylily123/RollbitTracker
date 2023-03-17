@@ -1,18 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 .robot_container {
-  width: 100vw;
-  height: 100vh;
+  flex-direction: row;
+  //width: 100vw;
+  align-items: stretch;
+  //height: fit-content;
+  margin: 2vw;
+  border-radius: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  //flex-direction: column;
+  //justify-content: center;
+  //align-items: center;
+  //flex-wrap: wrap;
   color: white;
+  background-color: #1F202A;
 }
 
 .robot_info {
-  width: 350px;
+  width: 45.5vw;
+  flex-wrap: wrap;
+  margin-top: 0.5vw;
+  display: flex;
+  margin-bottom: 2vw;
+}
+
+.robot_trait {
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 0.5vw;
+  font-size: 1rem;
+  text-align: left;
+  font-family: "Questrial", "sans-serif";
+
+}
+.robot_value {
+  font-family: "Questrial", "sans-serif";
+  text-align: left;
+}
+
+.robot_alltraits {
+  border: 1px solid #3B3E50;
+  margin: 1vw 0.5vw;
+  padding: 1vw;
+  color: #B1B4C4;
+  border-radius: 15px;
+}
+
+.robot_image_parent {
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  margin-left: 1vw;
+}
+.robot_image {
+  max-width: fit-content;
+  border-radius: 20px;
+}
+
+.robot_title {
+  font-size: 1.5rem;
+  height: fit-content;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  //margin-bottom: 1vw;
+}
+
+.robot_body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: baseline;
+  justify-self: flex-end;
+  margin-left: 1vw;
+}
+.robot_body_parent {
+  //width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .robot_body_parent {
+    flex-direction: row;
+  }
+  .robot_info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+    width: fit-content;
+    margin: 10px;
+  }
+  .robot_title {
+    font-size: 1.2rem;
+    text-align: center;
+    align-self: center;
+  }
+  .robot_container {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .robot_image_parent {
+    align-self: center;
+    margin-bottom: 2vw;
+  }
+  .robot_alltraits {
+    //flex: 1 1 calc(80% - 20px);
+    //box-sizing: border-box;
+    width: 100%;
+    padding: 3vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .robot_image {
+    max-width: 90%;
+    height: 80%;
+  }
+}
+
+.robot_stats {
+  gap: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 200%;
+}
+
+.robot_stats_title {
+  align-self: center;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+}
+
+.robot_stats_body {
+  border-left: #3B3E50 dashed 1px;
+  flex-direction: column;
+  display: flex;
+  gap: 20px;
+  height: border-box;
+  flex-basis: max-content;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vw;
+}
+.stats_data {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: left;
-  margin-bottom: 2rem;
+  align-items: center;
+  border: 1px solid #3B3E50;
+  border-radius: 15px;
+  padding: 0.8vw;
+  color: #B1B4C4;
+}
+
+.stats_data > h3 {
+  color: white;
+  font-size: 1rem;
+  font-family: 'Questrial', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 0.5vw;
+}
+.stats_data > p {
+  font-size: 1rem;
+  font-family: 'Questrial', sans-serif;
 }
