@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+}
+.text {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  font-size: 1.5rem;
+  color: #B1B4C4;
+  font-family: "Questrial", "sans-serif";
+}
+
+.link {
+  margin-top: 2vh;
+  align-self: center;
+  text-align: center;
+  align-items: center;
+  text-decoration: underline;
+  transition: 0.5s;
+}
+.link:hover {
+  color: #ebebfa;
+  border: 4px solid #3B3E50;
+  padding: 1vw;
+  border-radius: 25px;
+  cursor: pointer;
+}

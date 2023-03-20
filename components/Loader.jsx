@@ -3,7 +3,11 @@ import styles from '@/styles/Loader.module.scss'
 
 const Loader = (props) => {
 
-  return <span className={styles.loader}></span>;
+  return (
+      <div className={styles.parent}>
+        <span className={styles.loader}></span>
+      </div>
+  );
 }
 
 export default Loader

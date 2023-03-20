@@ -1,0 +1,28 @@
+.affiliation {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #3B3E50;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.affiliation_title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #3B3E50;
+    padding: 1rem;
+    border-radius: 20px;
+    font-family: "Apple SD Gothic Neo", sans-serif;
+}
+
+.affiliation_body {
+    border: 1px solid #3B3E50;
+    padding: 1rem;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Apple SD Gothic Neo", sans-serif;
+}

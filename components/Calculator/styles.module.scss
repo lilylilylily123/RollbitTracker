@@ -1,0 +1,94 @@
+.container {
+  justify-content: space-between;
+  display: flex;
+  //width: 100%;
+  flex-direction: row;
+  background-color: #1F202A;
+  margin: 2vw;
+  border-radius: 20px;
+}
+
+
+.total_container {
+  //width: fit-content;
+  font-size: 2rem;
+  color: white;
+  font-family: "Questrial", "sans-serif";
+  align-self: center;
+  text-align: center;
+  //flex: 1;
+  //justify-self: center;
+}
+.total_container > h1 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 1vw;
+}
+
+.robot_results {
+  display: flex;
+  flex-direction: column;
+  margin: 2vw;
+  gap: 17px;
+  flex: 0 1;
+  align-items: flex-end;
+}
+
+.robot_results > h3 {
+  margin: 1vw 0;
+  font-size: 1.5rem;
+  color: #B1B4C4;
+  font-family: "Questrial", "sans-serif";
+  text-decoration: underline;
+}
+
+.robot_inputs {
+  display: flex;
+  align-self: flex-start;
+  gap: 30px;
+  //flex: 0 1;
+  flex-direction: column;
+  margin: 2vw;
+}
+
+.robot_inputs > input {
+  border-radius: 10px;
+  padding: 1vw;
+  border: 1px solid #3B3E50;
+  background-color: #262736;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .robot_inputs {
+    justify-content: space-between;
+    margin: 2vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-self: center;
+  }
+  .robot_inputs > input {
+    width: fit-content;
+    text-align: center;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .total_container {
+    margin: 2vw;
+  }
+  .robot_results {
+    margin: 2vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .robot_inputs > input {
+    width: 100px;
+  }
+}

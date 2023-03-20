@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/DisplayRobot.module.scss";
 import LongRunner from "@/components/LongRunner";
+import RobotNotFound from "@/components/RobotNotFound/notFound";
 import {useRouter} from "next/router";
 import {setLazyProp} from "next/dist/server/api-utils";
+import Calculator from "@/components/Calculator/Calculator.js";
 import Loader from "@/components/Loader";
 import PocketBase from "pocketbase";
 import {getData} from "@/pages/api/robots/[id]";
 import Info from "@/components/Info";
 import Head from "next/head";
+import Error from "next/error";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -22,20 +25,29 @@ const initialRobot = {
 
 
 const DisplayRobot = ({ robotFull }) => {
-    const [loading, setLoading] = useState(true);
-    const [filterTrait, setFilterTrait] = useState([]);
     const router = useRouter();
     const {id} = router.query;
     // here it loads on second refresh, but not on first
     const robot = robotFull.robot_json.sportsbot;
+    if (robot === undefined) {
+        return <RobotNotFound id={id}/>
+    }
     const traits = robotFull.robot_json.data.traits;
+    if (traits === undefined) {
+        return <RobotNotFound id={id}/>
+    }
     const profitShare = robot.sportsbook_profit;
-    const sportshares = traits[0].value;
-    const freebet = traits[2].value;
+    if (profitShare === undefined) {
+        // console.log("wtf!x2")
+        return <RobotNotFound id={id}/>
+    }
+    const sportshares = robot.sportshares;
+    const freebet = robot.freebet_amount;
 
+    if (!robotFull) { return <Loader /> }
 
     return (
-        <div>
+        <div className={styles.page}>
         <div className={styles.robot_container}>
             <Head>
                 <title>{robot.name}</title>
@@ -79,6 +91,9 @@ const DisplayRobot = ({ robotFull }) => {
                     </div>
                 </div>
             </div>
+        </div>
+        <div className={styles.calculator_container}>
+            <Calculator fullRobot={robotFull} />
         </div>
         </div>
     );

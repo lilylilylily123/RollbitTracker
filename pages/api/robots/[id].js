@@ -18,7 +18,7 @@ export async function getData(id) {
     pb.autoCancellation(false)
     const authData = await pb.admins.authWithPassword('aksg656@icloud.com', 'goatGoat7&');
     const record = await pb.collection('robots').getFirstListItem('robot_id = ' + id, {
-        limit: 1,
+        // limit: 1,
     })
         .then(async (record) => {
             // check records for creation date

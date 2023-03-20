@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.calculator_container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  //align-items: center;
+}
+
 .robot_container {
   flex-direction: row;
   //width: 100vw;
@@ -53,8 +67,10 @@
   margin-left: 1vw;
 }
 .robot_image {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
   max-width: fit-content;
-  border-radius: 20px;
+  border-radius: 12px;
 }
 
 .robot_title {
@@ -123,7 +139,6 @@
 }
 
 .robot_stats {
-  gap: 20px;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -132,10 +147,12 @@
 }
 
 .robot_stats_title {
+  margin-top: 2.5vw;
   align-self: center;
   font-size: 1.5rem;
   font-family: 'Montserrat', sans-serif;
   display: flex;
+  margin-bottom: -0.5vw;
 }
 
 .robot_stats_body {

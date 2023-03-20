@@ -1,30 +1,18 @@
 import '@/styles/globals.scss'
-import Router from 'next/router'
+import Router, {useRouter} from 'next/router'
 import {useEffect, useState} from "react";
 import Loader from "@/components/Loader";
+import {usePageLoading} from "@/components/pageLoad";
 export default function App({ Component, pageProps }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+    const {isPageLoading} = usePageLoading();
+  const router = useRouter();
   useEffect(() => {
-    const start = () => {
-      console.log("start");
-      setLoading(true);
-    };
-    const end = () => {
-      console.log("finished");
-      setLoading(false);
-    };
-    Router.events.on("routeChangeStart", start);
-    Router.events.on("routeChangeComplete", end);
-    Router.events.on("routeChangeError", end);
-    return () => {
-      Router.events.off("routeChangeStart", start);
-      Router.events.off("routeChangeComplete", end);
-      Router.events.off("routeChangeError", end);
-    };
-  }, []);
+    router.isReady && setLoading(false);
+  })
   return (
       <>
-        {loading ? (
+        {isPageLoading ? (
             <Loader />
         ) : (
             <Component {...pageProps} />
