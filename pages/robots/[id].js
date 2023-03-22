@@ -12,6 +12,7 @@ import {getData} from "@/pages/api/robots/[id]";
 import Info from "@/components/Info";
 import Head from "next/head";
 import Error from "next/error";
+import RoiCalculator from "@/components/RoiCalculator/RoiCalculator";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -44,6 +45,8 @@ const DisplayRobot = ({ robotFull }) => {
     const sportshares = robot.sportshares;
     const freebet = robot.freebet_amount;
 
+
+    const [returnValue, setReturn] = useState(0);
     if (!robotFull) { return <Loader /> }
 
     return (
@@ -93,7 +96,11 @@ const DisplayRobot = ({ robotFull }) => {
             </div>
         </div>
         <div className={styles.calculator_container}>
-            <Calculator fullRobot={robotFull} />
+            <Calculator fullRobot={robotFull} setReturn={setReturn} />
+        </div>
+        <div className={styles.roi_calc_container}>
+            <RoiCalculator fullRobot={robotFull} returnValue={returnValue}/>
+            {returnValue}
         </div>
         </div>
     );
