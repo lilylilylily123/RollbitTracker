@@ -3,8 +3,8 @@ import {createBot} from "@/pages/api/db/create/[id]";
 import {create} from "axios";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
+pb.autoCancellation(false)
 export default async function handler(req, res) {
-    pb.autoCancellation(false)
     const { id } = req.query
     if (!id) {
         return res.status(400).json({ err: 'No id provided' });
@@ -15,7 +15,6 @@ export default async function handler(req, res) {
 
 
 export async function getData(id) {
-    pb.autoCancellation(false)
     const authData = await pb.admins.authWithPassword('aksg656@icloud.com', 'goatGoat7&');
     const record = await pb.collection('robots').getFirstListItem('robot_id = ' + id, {
         // limit: 1,

@@ -12,7 +12,12 @@ import {getData} from "@/pages/api/robots/[id]";
 import Info from "@/components/Info";
 import Head from "next/head";
 import Error from "next/error";
+import {checkWithCookie, finalCreateBot} from "@/pages/api/testing/[id]";
+import {AiOutlineStar, AiFillStar} from "react-icons/ai";
 import RoiCalculator from "@/components/RoiCalculator/RoiCalculator";
+import {serialize} from "cookie";
+import {createCookie} from "@/pages/api/db/create/[id]";
+import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -28,6 +33,8 @@ const initialRobot = {
 const DisplayRobot = ({ robotFull }) => {
     const router = useRouter();
     const {id} = router.query;
+    const [favorite, setFavorite] = useState(false);
+
     // here it loads on second refresh, but not on first
     const robot = robotFull.robot_json.sportsbot;
     if (robot === undefined) {
@@ -44,7 +51,6 @@ const DisplayRobot = ({ robotFull }) => {
     }
     const sportshares = robot.sportshares;
     const freebet = robot.freebet_amount;
-
 
     const [returnValue, setReturn] = useState(0);
     if (!robotFull) { return <Loader /> }
@@ -94,6 +100,22 @@ const DisplayRobot = ({ robotFull }) => {
                     </div>
                 </div>
             </div>
+        <div id={"favorite_button"} className={styles.favorite_button} onClick={() => {
+            setFavorite(!favorite);
+            const div = document.getElementById("favorite_button");
+            if (!favorite) {
+                appendToStorage("favorites", robotFull.robot_id + ",");
+                div.style.color = "yellow";
+            } else {
+                let old = localStorage.getItem("favorites");
+                div.style.color = "white";
+                if (old === null) old = "";
+                old = old.replace(robotFull.robot_id + ",", "");
+                localStorage.setItem("favorites", old);
+            }
+        }}>
+           <AiFillStar/>
+        </div>
         </div>
         <div className={styles.calculator_container}>
             <Calculator fullRobot={robotFull} setReturn={setReturn} />
@@ -113,7 +135,7 @@ export default DisplayRobot;
 
 export const getServerSideProps = async (ctx) => {
     const id = ctx.query.id;
-    //getData returns a json object, all fields from object are valid
+    // getData returns a json object, all fields from object are valid
     const robotFull = await getData(id)
         .then(async (data) => {
             return data;
@@ -124,3 +146,9 @@ export const getServerSideProps = async (ctx) => {
       },
     };
 };
+
+function appendToStorage(name, data){
+    let old = localStorage.getItem(name);
+    if(old === null) old = "";
+    localStorage.setItem(name, old + data);
+}

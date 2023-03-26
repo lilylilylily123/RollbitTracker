@@ -1,11 +1,12 @@
 import PocketBase from 'pocketbase';
+import {checkWithCookie} from "@/pages/api/testing/[id]";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
 export default async function handler(req, res) {
     const { id } = req.query
     // console.log(id)
-    const response = await fetch(`http://0.0.0.0:8000/robots/${id}`);
+    const response = await fetch(`http://127.0.0.1:8000/robots/${id}`);
     const data = await response.json();
     const dataDB = {
         "robot_json": data,
@@ -22,7 +23,8 @@ export default async function handler(req, res) {
 export async function createBot(id) {
     pb.autoCancellation(false)
     await pb.admins.authWithPassword('aksg656@icloud.com', 'goatGoat7&');
-    const response = await fetch(`http://0.0.0.0:8000/robots/${id}`);
+    const response = await fetch(`http://0.0.0.0:8000/robots/${id}`, {
+    });
     const data = await response.json();
     const dataDB = {
         "robot_json": data,
