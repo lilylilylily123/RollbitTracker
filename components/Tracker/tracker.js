@@ -42,7 +42,7 @@ export function TrackerChild({id, totals, setTotals}) {
 
                 setLoaded(true);
             })
-    }, [])
+    }, [id, setTotals])
 
     if (!loaded) { return <OtherLoader /> }
     const robot = robotFull.robot_json.sportsbot;

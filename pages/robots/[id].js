@@ -68,7 +68,7 @@ const DisplayRobot = ({robotFull}) => {
 
 
     //! error handling
-    if (robotFull.robot_json.error?.doc === undefined) {
+    if (robotFull.robot_json.error?.doc !== undefined) {
         return <RobotNotFound id={id}/>
     }
 

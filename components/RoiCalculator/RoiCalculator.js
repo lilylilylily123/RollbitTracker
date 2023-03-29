@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import {useEffect, useState} from "react";
+import {useEffect, useReducer, useState} from "react";
 
 export default function RoiCalculator({fullRobot, returnValue}) {
     const [roi, setRoi] = useState(40.00);
