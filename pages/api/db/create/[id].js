@@ -6,14 +6,14 @@ const pb = new PocketBase('http://127.0.0.1:8090');
 export default async function handler(req, res) {
     const { id } = req.query
     // console.log(id)
-    const response = await fetch(`http://127.0.0.1:8000/robots/${id}`);
+    const response = await fetch(`http://0.0.0.0:8000/robots/${id}`);
     const data = await response.json();
     const dataDB = {
         "robot_json": data,
         "robot_id": id
     }
-
-    const authData = await pb.admins.authWithPassword('aksg656@icloud.com', 'goatGoat7&');
+    //! env stuff is my pocketbase auth
+    const authData = await pb.admins.authWithPassword(process.env.DB_USER, process.env.DB_PASS);
 
 
     const record = await pb.collection('robots').create(dataDB);
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 
 export async function createBot(id) {
     pb.autoCancellation(false)
-    await pb.admins.authWithPassword('aksg656@icloud.com', 'goatGoat7&');
+    await pb.admins.authWithPassword(process.env.DB_USER, process.env.DB_PASS);
     const response = await fetch(`http://0.0.0.0:8000/robots/${id}`, {
     });
     const data = await response.json();

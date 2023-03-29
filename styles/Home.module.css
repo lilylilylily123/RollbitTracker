@@ -1,0 +1,63 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+.affiliation {
+  color: white;
+  align-self: flex-start;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 2vw;
+  margin-bottom: 2vw;
+}
+
+.image {
+  flex-direction: column;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vw;
+}
+
+.image > Image {
+  user-select: none;
+}
+
+.navigation {
+  width: fit-content;
+  flex: 1;
+  justify-content: flex-end;
+  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.rotater {
+  animation: rotate 12s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(30deg);
+  }
+  20% {
+    transform: rotate(0deg);
+  }
+}
+
+/*# sourceMappingURL=Home.module.css.map */

@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  padding: 2vw;
+  color: white;
+  flex-direction: column;
+  background-color: #1F202A;
+  justify-content: space-between;
+  flex: 1;
+  gap: 20px;
+  text-align: center;
+  margin: 2vw;
+  border-radius: 20px;
+}
+.link {
+  font-family: Questrial, sans-serif;
+  padding: 1vw;
+  transition: all 0.5s, transform 0.3s;
+}
+.link:hover {
+  transform: rotateX(360deg) scale(1.1) rotate(-5deg);
+  text-decoration: underline #FFF71BFF;
+  color: #B1B4C4;
+}

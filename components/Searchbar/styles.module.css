@@ -7,18 +7,23 @@
     position: relative;
     top: 50%;
     left: 50%;
+    box-shadow: 0 0 10px rgb(254,	230,	159	) ;
     transform: translate(-50%,-50%);
     transition: all 1s, border 0.2s;
     width: 50px;
     height: 50px;
-    background: rgb(255	226	22);
+    background: rgb(253, 255, 199);
     box-sizing: border-box;
     border-radius: 25px;
-    border: 4px solid rgb(255 222 24);
+    border: 4px solid rgb(253,	231,	158);
     padding: 5px;
+}
+.form:hover {
+    box-shadow: none;
 }
 
 .input{
+    text-align: center;
     background: #3B3E50;
     position: absolute;
     top: 0;
@@ -36,6 +41,7 @@
 }
 
 .fa{
+    border: 0;
     cursor: pointer;
     box-sizing: border-box;
     padding: 10px;
@@ -45,6 +51,7 @@
     top: 0;
     right: 0;
     border-radius: 50%;
+    background: rgb(253,	231,	158);
     color: #07051a;
     text-align: center;
     font-size: 1.2em;
@@ -64,7 +71,7 @@
 
 .form:hover .fa,
 .form:valid .fa{
-    background: #07051a;
+    background: #3B3E50;
     color: white;
 }
 
@@ -87,5 +94,5 @@
 }
 
 .button {
-    display: none;
+    /*display: none;*/
 }

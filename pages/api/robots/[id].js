@@ -13,14 +13,14 @@ export default async function handler(req, res) {
     return res.status(200).json({ data: data });
 }
 
-
+//* all the data fetching logic
 export async function getData(id) {
-    const authData = await pb.admins.authWithPassword('aksg656@icloud.com', 'goatGoat7&');
+    const authData = await pb.admins.authWithPassword(process.env.DB_USER, process.env.DB_PASS);
     const record = await pb.collection('robots').getFirstListItem('robot_id = ' + id, {
         // limit: 1,
     })
         .then(async (record) => {
-            // check records for creation date
+            //* check records for creation date
             const update = record.created;
             const now = new Date();
             const diff = now.getTime() - Date.parse(update);
@@ -35,13 +35,15 @@ export async function getData(id) {
         .catch(async (err) => {
             return await createBot(id);
         });
+    //! debugging stuff
+
     // console.log(record)
     // console.log(typeof (JSON.parse(JSON.stringify(record))))
     return (JSON.parse(JSON.stringify(record, null, 2)));
 }
 
-async function deleteRobot(id) {
-    await pb.admins.authWithPassword('aksg656@icloud.com', 'goatGoat7&')
+export async function deleteRobot(id) {
+    await pb.admins.authWithPassword(process.env.DB_USER, process.env.DB_PASS)
            await pb.collection('robots').getFirstListItem('robot_id = ' + id, {
                     limit: 1,
                 }

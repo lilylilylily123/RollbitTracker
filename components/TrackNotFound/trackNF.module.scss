@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 5vw;
+  padding: 3vw;
+  border: #3B3E50 solid 1px;
+  border-radius: 20px;
+  background-color: #1F202A;
+}
+
+.container > * {
+  font-family: "Questrial", "sans-serif";
+  text-align: center;
+  color: white;
+}
+
+.remove {
+  font-weight: bolder;
+  margin-top: 1vw;
+  color: #B1B4C4;
+  cursor: pointer;
+  text-decoration: underline;
+}

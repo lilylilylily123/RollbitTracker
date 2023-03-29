@@ -7,6 +7,7 @@ export default function Affiliation() {
                 Affiliation
             </div>
             <div className={styles.affiliation_body}>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
                 This site is not affiliated with "rollbit.com", "rollbot.com", or any other sites.
             </div>
         </div>

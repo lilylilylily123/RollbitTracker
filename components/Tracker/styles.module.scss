@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #3B3E50;
+  border: 5px solid #FDE79EFF;
   border-radius: 20px;
   background-color: #1F202A;
   margin: 2vw;
@@ -13,10 +13,25 @@
 .card_header {
   font-family: Questrial, sans-serif;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2vw;
+}
+
+.full_link {
+  font-family: Questrial, sans-serif;
+  font-size: 2rem;
+  margin-top: 0.5vw;
+  text-decoration: 3px underline white;
+  transition: 0.5s;
+  color: white;
+}
+
+.full_link:hover {
+  letter-spacing: 1px;
+  color: #eae00c;
+  text-decoration-color: #eae00c;
 }
 
 .robot_pfp {

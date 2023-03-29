@@ -27,17 +27,17 @@ export default function RoiCalculator({fullRobot, returnValue}) {
 
     return (
         <div className={styles.roi_container}>
-            <h1>ROI Calculator</h1>
-            <div className={styles.roi_inputs}>
-                <input value={price} onChange={(e) => setPrice(e.target.value)} type="text" placeholder="Enter your price" />
-                <input value={returnPrice} onChange={(e) => setReturnPrice(e.target.value)} type="text" placeholder="Enter your return" />
-                <input value={roi} onChange={(e) => setRoi(e.target.value)} type="text" placeholder="Enter your ROI" />
-            </div>
-            <div className={styles.roi_results}>
-                <h3>Price: <br />${displayPrice}</h3>
-                <h3>Return: <br />${returnPrice}</h3>
-                <h3>ROI: <br />{displayRoi}%</h3>
-            </div>
+                <h1>ROI Calculator</h1>
+                <div className={styles.roi_inputs}>
+                    <input value={price} onChange={(e) => setPrice(e.target.value)} type="text" placeholder="Enter your price" />
+                    <input value={returnPrice} onChange={(e) => setReturnPrice(e.target.value)} type="text" placeholder="Enter your return" />
+                    <input value={roi} onChange={(e) => setRoi(e.target.value)} type="text" placeholder="Enter your ROI" />
+                </div>
+                <div className={styles.roi_results}>
+                    <h3>Price: <br />${displayPrice}</h3>
+                    <h3>Return: <br />${returnPrice}</h3>
+                    <h3>ROI: <br />{displayRoi}%</h3>
+                </div>
         </div>
     )
 }
