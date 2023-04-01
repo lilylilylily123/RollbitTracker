@@ -4,7 +4,7 @@ import Loader from "@/components/Loader";
 
 export default function Totals({totals}) {
     const [loading, setLoading] = useState(false);
-
+    console.log(totals)
     const [freebet, setFreebet] = useState(0);
     const [profitshare, setProfitshare] = useState(0);
     const [yrProfitshare, setYrProfitshare] = useState(0);
@@ -60,7 +60,6 @@ export default function Totals({totals}) {
         for (let i=yFreb.length; i--;) {
             count+=parseFloat(yFreb[i]);
         }
-        console.log(totals.yrFreebet)
         setYrFreebet(count)
         setLoading(false)
     }, [totals.yrFreebet])
@@ -76,9 +75,9 @@ export default function Totals({totals}) {
                 <h1>Total Monthly Freebet: ${(yrFreebet / 12).toFixed(2)}</h1>
             </div>
             <div className={styles.profitshare}>
-                <h1>Total Profitshare: ${profitshare.toFixed(2)}</h1>
-                <h1>Total Yearly Profitshare: ${yrProfitshare.toFixed(2)}</h1>
-                <h1>Total Monthly Profitshare: ${(yrProfitshare / 12).toFixed(2)}</h1>
+                <h1>Total Profitshare: ${(profitshare).toFixed(2)}</h1>
+                <h1>Total Yearly Profitshare: ${(yrProfitshare).toFixed(2)}</h1>
+                <h1>Total Monthly Profitshare: ${((yrProfitshare) / 12).toFixed(2)}</h1>
             </div>
         </div>
     );

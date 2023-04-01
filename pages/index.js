@@ -29,7 +29,7 @@ export default function Home() {
               <Affiliation />
           </div>
             <div className={styles.navigation}>
-                <Nav track={true}/>
+                <Nav chart={true} track={true} color={"#3B3E50"}/>
             </div>
         </div>
 

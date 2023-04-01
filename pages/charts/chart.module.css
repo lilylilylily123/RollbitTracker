@@ -1,0 +1,9 @@
+.containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2vw;
+}
+
+/*# sourceMappingURL=chart.module.css.map */

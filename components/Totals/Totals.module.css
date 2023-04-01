@@ -1,0 +1,46 @@
+.totals {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 2vw;
+  text-align: center;
+  padding: 2vw;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #1F202A;
+  outline: 3px solid #fde79e;
+  border-radius: 15px;
+}
+
+.totals > * {
+  font-family: Questrial, sans-serif;
+}
+
+.freebet > h1 {
+  font-size: 2rem;
+  border-bottom: 4px solid #B1B4C4;
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  margin-bottom: 1vw;
+}
+
+.profitshare > h1 {
+  font-size: 2rem;
+  border-bottom: 4px solid #B1B4C4;
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  margin-bottom: 1vw;
+}
+
+@media (max-width: 1280px) {
+  .totals {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .totals {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/*# sourceMappingURL=Totals.module.css.map */

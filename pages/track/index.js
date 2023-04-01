@@ -50,7 +50,7 @@ function Tracker() {
                     <Totals totals={totals}/>
                 </div>
                 <div className={styles.nav}>
-                    <Nav search={true} track={false} />
+                    <Nav search={true} track={false} chart={true} color={"#FDE79EFF"} />
                 </div>
             </div>
             <div className={styles.cards}>

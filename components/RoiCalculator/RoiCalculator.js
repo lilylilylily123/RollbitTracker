@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import {useEffect, useReducer, useState} from "react";
 
-export default function RoiCalculator({fullRobot, returnValue}) {
+export default function RoiCalculator({returnValue}) {
     const [roi, setRoi] = useState(40.00);
     let ogPrice = returnValue/(roi/100)
     const [price, setPrice] = useState(ogPrice.toFixed(2));

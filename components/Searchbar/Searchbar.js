@@ -18,7 +18,7 @@ export default function Searchbar() {
 
 
     return (
-        <form className={styles.form}>
+        <form noValidate={true} className={styles.form}>
             <input className={styles.input} type="text" inputMode={"numeric"} pattern="\d*" value={search} onChange={(e) => setSearch(e.target.value)} required/>
             <button className={styles.fa} onClick={handleSubmit}><i ><FiSearch/></i></button>
         </form>

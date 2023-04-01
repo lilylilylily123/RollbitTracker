@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: fit-content;
+  margin: 2vw;
+  border-radius: 17px;
+  width: calc(100% - 4vw);
+  background-color: #262736;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 2vw;
+  scale: 100%;
+}

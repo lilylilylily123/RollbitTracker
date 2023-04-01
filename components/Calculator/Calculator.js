@@ -1,14 +1,11 @@
 import styles from "./styles.module.scss";
 import {useState} from "react";
 
-export default function Calculator({fullRobot, setReturn}) {
+export default function Calculator({fullRobot, setReturn, value}) {
     const [share, setShare] = useState(100);
     const [bet, setBet] = useState(50);
-    const sports = fullRobot.robot_json.sportsbot;
-    const traits = fullRobot.robot_json.data.traits;
-    const value = sports.sportsbook_profit;
-    const sportshares = sports.sportshares;
-    const freebet = sports.freebet_amount;
+    const sportshares = fullRobot.robot_json.attributes[10].value;
+    const freebet = fullRobot.robot_json.attributes[8].value;
     let yearlyShare = calculateYearlyShare(share, sportshares, value);
     let yearlyFreebet = calculateYearlyFreebet(bet, freebet);
     let totalReturn = (parseFloat(yearlyShare) + parseFloat(yearlyFreebet)).toFixed(2);

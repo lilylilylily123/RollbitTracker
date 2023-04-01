@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import Calculator from "@/components/Calculator/Calculator.js";
 import Loader from "@/components/Loader";
 import PocketBase from "pocketbase";
-import {getData} from "@/pages/api/robots/[id]";
+import {getData, getValue, letsTryAgain} from "@/pages/api/robots/[id]";
 import Info from "@/components/Info";
 import Head from "next/head";
 import {AiFillStar} from "react-icons/ai";
@@ -22,11 +22,10 @@ const initialRobot = {
     robot_id: [],
 };
 
-const DisplayRobot = ({robotFull}) => {
+const DisplayRobot = ({robotFull, value}) => {
     const router = useRouter();
     const {id} = router.query;
     const [favorite, setFavorite] = useState(false);
-
     //*everything from here down is favorites logic
     useEffect(() => {
         const div = document.getElementById("favorite_button");
@@ -40,7 +39,6 @@ const DisplayRobot = ({robotFull}) => {
             setFavorite(false);
         }
     }, [id]);
-
     useEffect(() => {
         const div = document.getElementById("favorite_button");
         if (div === null) return;
@@ -62,30 +60,15 @@ const DisplayRobot = ({robotFull}) => {
             old = old.replace(robotFull.robot_id + ",", "");
             sessionStorage.setItem("favorites", old);
         }
-    }, [favorite]);
+    }, [favorite, id, robotFull.robot_id]);
     const [returnValue, setReturn] = useState(0);
     //*to here
 
-
-    //! error handling
-    if (robotFull.robot_json.error?.doc !== undefined) {
-        return <RobotNotFound id={id}/>
-    }
-
-    const robot = robotFull.robot_json.sportsbot;
-    if (robot === undefined) {
-        return <RobotNotFound id={id}/>
-    }
-    const traits = robotFull.robot_json.data.traits;
-    if (traits === undefined) {
-        return <RobotNotFound id={id}/>
-    }
-    const profitShare = robot.sportsbook_profit;
-    if (profitShare === undefined) {
-        return <RobotNotFound id={id}/>
-    }
-    const sportshares = robot.sportshares;
-    const freebet = robot.freebet_amount;
+    const robot = robotFull.robot_json
+    const traits = robot.attributes
+    const freebet = traits[8].value
+    const sportshares = traits[10].value
+    const profitShare = value * sportshares
 
     if (!robotFull) {
         return <Loader/>
@@ -104,7 +87,7 @@ const DisplayRobot = ({robotFull}) => {
                     <Image
                         className={styles.robot_image}
                         priority
-                        src={robot.image_full}
+                        src={robot.image}
                         alt={robot.name}
                         width={350}
                         height={350}
@@ -143,15 +126,15 @@ const DisplayRobot = ({robotFull}) => {
 
             </div>
             <div className={styles.calculator_container}>
-                <Calculator fullRobot={robotFull} setReturn={setReturn}/>
+                <Calculator value={profitShare} fullRobot={robotFull} setReturn={setReturn}/>
             </div>
             <div className={styles.lower_level_container}>
                 <div className={styles.roi_calc_container}>
-                    <RoiCalculator fullRobot={robotFull} returnValue={returnValue}/>
+                    <RoiCalculator returnValue={returnValue}/>
                 </div>
 
                 <div className={styles.navigation_container}>
-                    <Nav track={true} search={true}/>
+                    <Nav track={true} search={true} color={"#1F202A"}/>
                 </div>
             </div>
         </div>
@@ -163,12 +146,15 @@ export default DisplayRobot;
 
 export const getServerSideProps = async (ctx) => {
     const id = ctx.query.id;
-    const robotFull = await getData(id)
+    const robotFull = await letsTryAgain(id)
         .then(async (data) => {
             return data;
         })
+    const sport = robotFull.robot_json.attributes[2].value
+    const value = await getValue(sport)
     return {
         props: {
+            value,
             robotFull,
         },
     };

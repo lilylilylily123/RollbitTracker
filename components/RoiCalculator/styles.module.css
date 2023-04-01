@@ -1,0 +1,104 @@
+.roi_container {
+  width: calc(100% - 4vw);
+  display: flex;
+  flex-direction: column;
+  background-color: #1F202A;
+  flex: 1;
+  margin: 2vw;
+  border-radius: 20px;
+}
+
+.roi_container {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+}
+
+.roi_inputs {
+  margin: 2vw 2vw 2vw 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.roi_results {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 0 2vw 2vw 2vw;
+  color: white;
+}
+
+.roi_results > h3 {
+  font-size: 1.5rem;
+  width: 100px;
+  font-family: "Questrial", "sans-serif";
+  text-align: center;
+}
+
+.roi_inputs > input {
+  width: 100px;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 1px solid #3B3E50;
+  border-radius: 13px;
+  padding: 1vw;
+  color: white;
+  background-color: #262736;
+}
+
+.roi_container > h1 {
+  margin: 2vw 2vw 0vw 2vw;
+  font-size: 1.8rem;
+  font-family: "Questrial", "sans-serif";
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .roi_inputs {
+    gap: 20px;
+    scale: 80%;
+  }
+  .roi_results {
+    gap: 30px;
+    scale: 80%;
+  }
+  .roi_container > h1 {
+    scale: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .roi_inputs {
+    gap: 20px;
+    scale: 80%;
+  }
+  .roi_container {
+    margin: 2vw;
+    flex: 1;
+  }
+  .roi_results {
+    gap: 30px;
+    scale: 80%;
+  }
+  .roi_container > h1 {
+    scale: 80%;
+  }
+}
+@media (max-width: 400px) {
+  .roi_inputs {
+    gap: 20px;
+    scale: 70%;
+  }
+  .roi_results {
+    gap: 30px;
+    scale: 70%;
+  }
+  .secondary_container > h1 {
+    scale: 70%;
+  }
+}
+
+/*# sourceMappingURL=styles.module.css.map */

@@ -12,7 +12,7 @@ export default function App({Component, pageProps}) {
     const router = useRouter();
     useEffect(() => {
         router.isReady && setLoading(false);
-    })
+    }, [router.isReady])
     return (
         <>
             {isPageLoading ? (
