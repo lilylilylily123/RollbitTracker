@@ -43,6 +43,7 @@ export default function Calculator({fullRobot, setReturn, value}) {
 
 function calculateYearlyShare(share, sportshares, value) {
     const perShare = value.toFixed(2) / sportshares;
+    console.log(perShare)
     const sharePercentage = share / 100;
     return (perShare.toFixed(1) * sportshares * 12  * sharePercentage).toFixed(2);
 }

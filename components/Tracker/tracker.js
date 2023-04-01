@@ -46,7 +46,6 @@ export function TrackerChild({id, totals, setTotals}) {
         return <TrackNotFound id={id} />
     }
     let yearlyShare = calculateYearlyShare(100, sportshares, value);
-    console.log(yearlyShare)
     let yearlyFreebet = calculateYearlyFreebet(50, parseInt(robot.attributes[8].value));
     let totalReturn = (parseFloat(yearlyShare) + parseFloat(yearlyFreebet)).toFixed(2);
 
@@ -69,10 +68,8 @@ export function TrackerChild({id, totals, setTotals}) {
 }
 
 function calculateYearlyShare(share, sportshares, value) {
-    if (value === undefined) {
-        return 0;
-    }
-    const perShare = parseInt(value).toFixed(2) / sportshares;
+    const value2 = value * sportshares;
+    const perShare = value2.toFixed(2) / sportshares;
     const sharePercentage = share / 100;
     return (perShare.toFixed(1) * sportshares * 12  * sharePercentage).toFixed(2);
 }

@@ -9,61 +9,8 @@ export default async function handler(req, res) {
     if (!id) {
         return res.status(400).json({ err: 'No id provided' });
     }
-    const data = await getData(id);
+    const data = await letsTryAgain(id);
     return res.status(200).json({ data: data });
-}
-
-//* all the data fetching logic
-export async function getData(id) {
-    const authData = await pb.admins.authWithPassword(process.env.DB_USER, process.env.DB_PASS);
-    const record = await pb.collection('robots').getFirstListItem('robot_id = ' + id, {
-        // limit: 1,
-    })
-        .then(async (record) => {
-            //* check records for creation date
-            const update = record.created;
-            const now = new Date();
-            const diff = now.getTime() - Date.parse(update);
-            if (diff > 900000) {
-                await deleteRobot(id);
-                return await createBot(id);
-            } else {
-                // console.log("2")
-                return await stringToJSON(record);
-            }
-        })
-        .catch(async (err) => {
-            return await createBot(id);
-        });
-    //! debugging stuff
-
-    // console.log(record)
-    // console.log(typeof (JSON.parse(JSON.stringify(record))))
-    return (JSON.parse(JSON.stringify(record, null, 2)));
-}
-
-export async function deleteRobot(id) {
-    await pb.admins.authWithPassword("aksg656@icloud.com", "goatGoat7&");
-       await pb.collection('robots_v2').getFirstListItem('robot_id = ' + id, {
-                limit: 1,
-            }
-        )
-            .then(async (records) => {
-                await pb.collection('robots_v2').delete(records.id)
-            })
-            .catch(async (err) => {
-                console.log(err)
-            });
-}
-
-function stringToJSON(record) {
-    return new Promise((resolve, reject) => {
-        if (record) {
-            resolve(JSON.parse(JSON.stringify(record)))
-        } else {
-            reject("No record found")
-        }
-    })
 }
 
 async function createThisBot(id) {

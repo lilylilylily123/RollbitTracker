@@ -4,7 +4,6 @@ import Loader from "@/components/Loader";
 
 export default function Totals({totals}) {
     const [loading, setLoading] = useState(false);
-    console.log(totals)
     const [freebet, setFreebet] = useState(0);
     const [profitshare, setProfitshare] = useState(0);
     const [yrProfitshare, setYrProfitshare] = useState(0);
