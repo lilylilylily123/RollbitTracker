@@ -30,7 +30,7 @@ export default function Home() {
           <div className={styles.search}>
             <Searchbar />
           </div>
-            <div data-tooltip-id={"tooltip"} data-tooltip-html={" <div style=\"\n        text-align: center;\n        background-color: #262736;\n        font-family: Questrial, sans-serif;\n        font-weight: 600;\n        z-index: 1;\n        padding: 1vw;\n        border-radius: 1vw;\n    \" >\n        <h1>Thanks!</h1>\n        <p>\n            This site will never be paywalled, and was made with the intention of giving back to the Rollbit Community.\n            <br/>\n            I would like to thank my amazing dev <code>goat#2017</code> for the hard work they put in to making this site a reality.\n            <br/>\n            If you are feeling generous, and would like to buy my next coffee or help recoup some of the site&apos;s dev costs & maintenance fees,\n            <br/>\n            please feel free to <code>/tip mmikebike09</code> and use the code <code>ROLLTRACK</code> while playing :)\n        </p>\n    </div>"} data-html={true} className={styles.promocode}>
+            <div data-tooltip-id={"tooltip"} data-tooltip-html={""} data-html={true} className={styles.promocode}>
                 <h1>Code: <span>ROLLTRACK</span> & /tip mmikebike09</h1>
             </div>
             <Tooltip id={"tooltip"}
