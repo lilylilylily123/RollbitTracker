@@ -2,10 +2,10 @@ import styles from "./styles.module.scss";
 import {useEffect, useState} from "react";
 import {getData, getValue, letsTryAgain} from "@/pages/api/robots/[id]";
 import Image from "next/image";
-import Info from "@/components/Info";
-import Loader from "@/components/OtherLoader/OtherLoader";
-import OtherLoader from "@/components/OtherLoader/OtherLoader";
-import TrackNotFound from "@/components/TrackNotFound/TrackNotFound";
+import Info from "@/components/OTHER/Info";
+import Loader from "@/components/OTHER/OtherLoader/OtherLoader";
+import OtherLoader from "@/components/OTHER/OtherLoader/OtherLoader";
+import TrackNotFound from "@/components/OTHER/TrackNotFound/TrackNotFound";
 import Link from "next/link";
 
 //! i use client side fetching here,

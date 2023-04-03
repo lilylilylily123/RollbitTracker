@@ -1,14 +1,13 @@
 .roi_container {
   width: calc(100% - 4vw);
-  display: flex;
   flex-direction: column;
   background-color: #1F202A;
-  flex: 1;
   margin: 2vw;
   border-radius: 20px;
 }
 
 .roi_container {
+  //margin: 4vw;
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -26,6 +25,7 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-evenly;
+  //margin-bottom: 2vh;
   text-align: center;
   margin: 0 2vw 2vw 2vw;
   color: white;
@@ -50,10 +50,11 @@
 }
 
 .roi_container > h1 {
-  margin: 2vw 2vw 0vw 2vw;
+  margin: 2vw 2vw 0 2vw;
   font-size: 1.8rem;
   font-family: "Questrial", "sans-serif";
   text-align: center;
+  //margin-top: 2vw;
   color: white;
 }
 
@@ -70,6 +71,7 @@
     scale: 80%;
   }
 }
+
 @media (max-width: 768px) {
   .roi_inputs {
     gap: 20px;
@@ -87,6 +89,7 @@
     scale: 80%;
   }
 }
+
 @media (max-width: 400px) {
   .roi_inputs {
     gap: 20px;
@@ -100,5 +103,3 @@
     scale: 70%;
   }
 }
-
-/*# sourceMappingURL=styles.module.css.map */

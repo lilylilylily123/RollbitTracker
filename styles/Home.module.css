@@ -48,6 +48,31 @@
   animation: rotate 12s infinite linear;
 }
 
+.promocode {
+  color: white;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  border: 5px solid #262736;
+  border-radius: 20px;
+  font-family: Questrial, sans-serif;
+  position: absolute;
+  bottom: 2vh;
+  padding: 1vw;
+  background-color: #1F202A;
+  text-align: center;
+  align-self: center;
+  margin-right: 2vw;
+  margin-bottom: 2vw;
+}
+
+.promocode > h1 > span {
+  border-radius: 15px;
+  text-decoration: underline 5px solid #fde79e;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -58,6 +83,23 @@
   20% {
     transform: rotate(0deg);
   }
+}
+@media (max-width: 768px) {
+  .promocode {
+    position: absolute;
+    z-index: 1;
+    bottom: 30vw;
+    right: 5px;
+    width: 50%;
+  }
+}
+.tooltipcontent {
+  text-align: center;
+  background-color: #262736;
+  font-family: Questrial, sans-serif;
+  font-weight: 600;
+  z-index: 1;
+  padding: 1vw;
 }
 
 /*# sourceMappingURL=Home.module.css.map */

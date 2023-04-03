@@ -75,9 +75,6 @@ export default function Chart() {
     }, [])
     return (
         <div className={styles.containers}>
-            <div className={styles.navigation}>
-                <Nav track={true} color={"#262736"} search={true} chart={false}/>
-            </div>
             <Volume SevenVolume={sevendaystats[0]} ThirtyVolume={thirtydaystats[0]} DayVolume={daystats[0]}/>
             <Sales Seven={sevendaystats[1]} Thirty={thirtydaystats[1]} One={daystats[1]}/>
         </div>

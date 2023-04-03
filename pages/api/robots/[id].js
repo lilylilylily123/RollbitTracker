@@ -59,5 +59,8 @@ export async function getValue(sport) {
         })
     const data = JSON.parse(JSON.stringify(record));
     const value = data.robot_json.sportsbot.sportsbook_profit;
+    if (value === undefined) {
+        return 0;
+    }
     return value;
 }

@@ -7,16 +7,14 @@ export default async function handler(request, response) {
     pb.autoCancellation(false)
     const arr = [
         104, 1052, 1050, 115, 11, 1122, 1179, 1086, 1922,
-        1116, 1032, 1083, 1141, 7166, 1212, 1133, 1349, 1142, 2161, 1249,
-        1060, 1411, 1271, 89, 9428, 8988, 8583, 2458, 6306, 2647, 1523,
-        1640
+        1116, 1075, 1083, 1141
     ];
     const timer = ms => new Promise(res => setTimeout(res, ms))
     for (const value of arr) {
         const index = arr.indexOf(value);
         const url = `http://0.0.0.0:8000/robots/${value}`;
         await deleteHistory(value, pb);
-        delayFetch(url, {delay: 5000 * index})
+        delayFetch(url, {delay: 6000 * index})
             .then((res) => res.json())
             .then(async (data) => {
                 console.log(index)
@@ -26,7 +24,7 @@ export default async function handler(request, response) {
                 if (data.sportsbot.traits.sport === undefined) {
                     data.sportsbot.traits.sport = "retry"
                 }
-                console.log(data.sportsbot.traits)
+                console.log(data.sportsbot.traits.sport)
                 const dataDB = {
                     "robot_json": data,
                     "robot_id": value,
@@ -34,7 +32,7 @@ export default async function handler(request, response) {
                 }
                 await pb.collection('robot_historical').create(dataDB);
             })
-        await timer(10 * 1000)
+        await timer(15 * 1000)
     }
     const end = new Date();
     const time = end - start;

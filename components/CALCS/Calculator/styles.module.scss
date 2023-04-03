@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   background-color: #1F202A;
-  flex: 1;
-  margin: 2vw;
+  width: calc(100% - 4vw);
+  //width: 30%;
+  margin: 2vw 2vw 2vw 2vw;
   border-radius: 20px;
 }
 
@@ -13,6 +14,14 @@
   margin: 0 2vw 0 2vw;
   //width: 100%;
   flex-direction: row;
+}
+
+.robot_results > label {
+  text-align: center;
+  align-self: center;
+  font-size: 1.5rem;
+  color: white;
+  font-family: Questrial, sans-serif;
 }
 
 .robot_inputs > input {
@@ -75,7 +84,7 @@
 
 .robot_results > h3 {
   margin: 1vw 0;
-  //width: 100%;
+  width: 150%;
   text-align: center;
   align-self: center;
   font-size: 1.5rem;
@@ -86,6 +95,9 @@
   font-family: "Questrial", "sans-serif";
 }
 
+.labelz {
+  text-decoration: underline 4px #B1B4C4;
+}
 
 .robot_inputs {
   display: flex;

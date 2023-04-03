@@ -1,0 +1,54 @@
+.topnav {
+  background-color: #262736;
+  border-radius: 17px;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: 0.5vw;
+  padding: 1vw;
+  height: 2.5vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchbar {
+  align-self: center;
+  justify-self: center;
+  margin-top: 3vw;
+  position: relative;
+}
+
+.link {
+  font-size: 2rem;
+  font-family: Questrial, sans-serif;
+  color: white;
+  transition: all 0.5s, transform 0.3s;
+}
+
+.icon {
+  transition: 0.5s;
+}
+
+.icon:hover {
+  transform: rotateZ(360deg);
+}
+
+.link:hover {
+  transform: rotateX(360deg) scale(1.1) rotate(-5deg);
+  text-decoration: underline rgb(253, 231, 158);
+  color: #B1B4C4;
+}
+
+@media (max-width: 768px) {
+  .topnav {
+    margin: 4vw;
+    height: fit-content;
+    align-items: center;
+  }
+  .searchbar {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=fullbar.module.css.map */

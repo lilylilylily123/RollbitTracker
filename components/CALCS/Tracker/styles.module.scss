@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 5px solid #fde79e;
+  border: 5px solid #FDE79EFF;
   border-radius: 20px;
   background-color: #1F202A;
   margin: 2vw;
@@ -23,15 +23,15 @@
   font-family: Questrial, sans-serif;
   font-size: 2rem;
   margin-top: 0.5vw;
-  text-decoration: 3px underline white;
+  text-decoration: 3px underline #fde79e;
   transition: 0.5s;
   color: white;
 }
 
 .full_link:hover {
   letter-spacing: 1px;
-  color: #eae00c;
-  text-decoration-color: #eae00c;
+  color: #fde79e;
+  text-decoration-color: #fde79e;
 }
 
 .robot_pfp {
@@ -62,5 +62,3 @@
   border-radius: 15px;
   color: #B1B4C4;
 }
-
-/*# sourceMappingURL=styles.module.css.map */

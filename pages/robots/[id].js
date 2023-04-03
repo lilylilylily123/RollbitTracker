@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import styles from "@/styles/DisplayRobot.module.scss";
-import RobotNotFound from "@/components/RobotNotFound/notFound";
+import RobotNotFound from "@/components/OTHER/RobotNotFound/notFound";
 import {useRouter} from "next/router";
-import Calculator from "@/components/Calculator/Calculator.js";
-import Loader from "@/components/Loader";
+import Calculator from "@/components/CALCS/Calculator/Calculator.js";
+import Loader from "@/components/OTHER/Loader";
 import PocketBase from "pocketbase";
 import {getData, getValue, letsTryAgain} from "@/pages/api/robots/[id]";
-import Info from "@/components/Info";
+import Info from "@/components/OTHER/Info";
 import Head from "next/head";
 import {AiFillStar} from "react-icons/ai";
-import RoiCalculator from "@/components/RoiCalculator/RoiCalculator";
+import RoiCalculator from "@/components/CALCS/RoiCalculator/RoiCalculator";
 import Nav from "@/components/Navbar/Nav";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
@@ -30,12 +30,12 @@ const DisplayRobot = ({robotFull, value}) => {
     useEffect(() => {
         const div = document.getElementById("favorite_button");
         if (div === null) return;
-        if (sessionStorage.getItem("favorites") === null) {
-            sessionStorage.setItem("favorites", "");
+        if (localStorage.getItem("favorites") === null) {
+            localStorage.setItem("favorites", "");
             setFavorite(true);
-        } else if (!sessionStorage.getItem("favorites").includes(id)) {
+        } else if (!localStorage.getItem("favorites").includes(id)) {
             setFavorite(true);
-        } else if (sessionStorage.getItem("favorites") === null) {
+        } else if (localStorage.getItem("favorites") === null) {
             setFavorite(false);
         }
     }, [id]);
@@ -43,27 +43,30 @@ const DisplayRobot = ({robotFull, value}) => {
         const div = document.getElementById("favorite_button");
         if (div === null) return;
         if (!favorite) {
-            if (sessionStorage.getItem("favorites") === null) {
+            if (localStorage.getItem("favorites") === null) {
                 appendToStorage("favorites", robotFull.robot_id + ",");
-                div.style.color = "yellow";
-            } else if (sessionStorage.getItem("favorites").includes(id)) {
-                div.style.color = "yellow";
-            } else if (!sessionStorage.getItem("favorites").includes(id)) {
+                div.style.color = "#fde79e";
+            } else if (localStorage.getItem("favorites").includes(id)) {
+                div.style.color = "#fde79e";
+            } else if (!localStorage.getItem("favorites").includes(id)) {
                 appendToStorage("favorites", robotFull.robot_id + ",");
-                div.style.color = "yellow";
+                div.style.color = "#fde79e";
             }
 
         } else {
-            let old = sessionStorage.getItem("favorites");
+            let old = localStorage.getItem("favorites");
             div.style.color = "white";
             if (old === null) old = "";
             old = old.replace(robotFull.robot_id + ",", "");
-            sessionStorage.setItem("favorites", old);
+            localStorage.setItem("favorites", old);
         }
     }, [favorite, id, robotFull.robot_id]);
     const [returnValue, setReturn] = useState(0);
     //*to here
 
+    if (value === 0) {
+        return <RobotNotFound id={id}/>
+    }
     const robot = robotFull.robot_json
     const traits = robot.attributes
     const freebet = traits[8].value
@@ -79,7 +82,7 @@ const DisplayRobot = ({robotFull, value}) => {
         <div className={styles.page}>
             <div className={styles.robot_container}>
                 <Head>
-                    <title>{robot.name}</title>
+                    <title>{robot.name} || RollTrack</title>
                     <meta name="description" content={robot.description}/>
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 </Head>
@@ -125,17 +128,18 @@ const DisplayRobot = ({robotFull, value}) => {
                 </div>
 
             </div>
-            <div className={styles.calculator_container}>
-                <Calculator value={profitShare} fullRobot={robotFull} setReturn={setReturn}/>
-            </div>
+
             <div className={styles.lower_level_container}>
+
+                <div className={styles.calculator_container}>
+                    <Calculator value={profitShare} fullRobot={robotFull} setReturn={setReturn}/>
+                </div>
                 <div className={styles.roi_calc_container}>
                     <RoiCalculator returnValue={returnValue}/>
                 </div>
-
-                <div className={styles.navigation_container}>
-                    <Nav track={true} search={true} color={"#1F202A"}/>
-                </div>
+                {/*<div className={styles.navigation_container}>*/}
+                {/*    <Nav track={true} search={true} color={"#1F202A"}/>*/}
+                {/*</div>*/}
             </div>
         </div>
     );
@@ -150,6 +154,7 @@ export const getServerSideProps = async (ctx) => {
         .then(async (data) => {
             return data;
         })
+    if (robotFull.robot_json.attributes === undefined) return {props: {robotFull: initialRobot, value: 0}}
     const sport = robotFull.robot_json.attributes[2].value
     const value = await getValue(sport)
     return {
@@ -161,13 +166,13 @@ export const getServerSideProps = async (ctx) => {
 };
 
 function appendToStorage(name, data) {
-    let old = sessionStorage.getItem(name);
+    let old = localStorage.getItem(name);
     if (old === null) old = "";
-    sessionStorage.setItem(name, old + data);
+    localStorage.setItem(name, old + data);
 }
 
 function checkStorageId(id) {
-    let old = sessionStorage.getItem("favorites");
+    let old = localStorage.getItem("favorites");
     if (old === null) old = "";
     return old.includes(id);
 }

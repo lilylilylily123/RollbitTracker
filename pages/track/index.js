@@ -1,13 +1,12 @@
 import DisplayRobot from "@/pages/robots/[id]";
 import styles from "./track.module.scss";
 import {getData} from "@/pages/api/robots/[id]";
-import {TrackerChild} from "@/components/Tracker/tracker";
+import {TrackerChild} from "@/components/CALCS/Tracker/tracker";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import Loader from "@/components/Loader";
+import Loader from "@/components/OTHER/Loader";
 import Fav from "@/components/FavsNotFound/Fav";
-import Totals from "@/components/Totals/Totals";
-import Nav from "@/components/Navbar/Nav";
+import Totals from "@/components/CALCS/Totals/Totals";
 function Tracker() {
     const router = useRouter();
     const [loaded, setLoaded] = useState(false);
@@ -22,8 +21,8 @@ function Tracker() {
     })
     //* more session storage logic
     useEffect(() => {
-        setError(false)
-        const robot = sessionStorage.getItem("favorites")
+        setError(false);
+        const robot = localStorage.getItem("favorites")
         if (robot === null || robot === "" || robot === "null") {
             setError(true);
         } else {
@@ -49,9 +48,7 @@ function Tracker() {
                 <div className={styles.total}>
                     <Totals totals={totals}/>
                 </div>
-                <div className={styles.nav}>
-                    <Nav search={true} track={false} chart={true} color={"#FDE79EFF"} />
-                </div>
+
             </div>
             <div className={styles.cards}>
                 {robotList.map((id, index) => {

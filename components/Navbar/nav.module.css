@@ -21,7 +21,7 @@
 
 .link:hover {
   transform: rotateX(360deg) scale(1.1) rotate(-5deg);
-  text-decoration: underline #fff71b;
+  text-decoration: underline rgb(253, 231, 158);
   color: #B1B4C4;
 }
 

@@ -1,6 +1,6 @@
 import styles from './Totals.module.scss';
 import {useEffect, useState} from "react";
-import Loader from "@/components/Loader";
+import Loader from "@/components/OTHER/Loader";
 
 export default function Totals({totals}) {
     const [loading, setLoading] = useState(false);
@@ -77,6 +77,9 @@ export default function Totals({totals}) {
                 <h1>Total Profitshare: ${(profitshare).toFixed(2)}</h1>
                 <h1>Total Yearly Profitshare: ${(yrProfitshare).toFixed(2)}</h1>
                 <h1>Total Monthly Profitshare: ${((yrProfitshare) / 12).toFixed(2)}</h1>
+            </div>
+            <div className={styles.return}>
+                <h1>Total Yearly Return: ${yrProfitshare + yrFreebet}</h1>
             </div>
         </div>
     );
