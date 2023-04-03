@@ -4,8 +4,8 @@ import Searchbar from "@/components/Searchbar/Searchbar";
 import Affiliation from "@/components/OTHER/Affiliation/Affiliation";
 import Image from "next/image";
 import Nav from "@/components/Navbar/Nav";
-// import 'react-tooltip/dist/react-tooltip.css'
-// import {Tooltip} from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+import {Tooltip} from 'react-tooltip'
 
 
 export default function Home() {
@@ -29,9 +29,9 @@ export default function Home() {
             <div data-tooltip-id={"tooltip"} data-tooltip-html={""} data-html={true} className={styles.promocode}>
                 <h1>Code: <span>ROLLTRACK</span> & /tip mmikebike09</h1>
             </div>
-            {/*<Tooltip id={"tooltip"}*/}
-            {/*         style={{backgroundColor: "#1F202A", color: "white", border: "none", borderRadius: "0.9vw", padding: "20px", fontSize: "1.2rem", zIndex: 1}}*/}
-            {/*/>*/}
+            <Tooltip id={"tooltip"}
+                     style={{backgroundColor: "#1F202A", color: "white", border: "none", borderRadius: "0.9vw", padding: "20px", fontSize: "1.2rem", zIndex: 1}}
+            />
           <div className={styles.affiliation}>
               <Affiliation />
           </div>
