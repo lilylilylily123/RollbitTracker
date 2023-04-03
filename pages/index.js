@@ -1,5 +1,4 @@
 import Head from "next/head";
-import {Inter} from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import Searchbar from "@/components/Searchbar/Searchbar";
 import Affiliation from "@/components/OTHER/Affiliation/Affiliation";
@@ -7,12 +6,18 @@ import Image from "next/image";
 import Nav from "@/components/Navbar/Nav";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import {renderToStaticMarkup} from "react-dom/server";
 
-
-const ToolTipContent = (
-    <div className={styles.tooltipcontent}>
-        <h1>Thanks</h1>
+const tooltipContent = `
+    <div style="
+        text-align: center;
+        background-color: #262736;
+        font-family: Questrial, sans-serif;
+        font-weight: 600;
+        z-index: 1;
+        padding: 1vw;
+        border-radius: 1vw;
+    " >
+        <h1>Thanks!</h1>
         <p>
             This site will never be paywalled, and was made with the intention of giving back to the Rollbit Community.
             <br/>
@@ -23,8 +28,8 @@ const ToolTipContent = (
             please feel free to <code>/tip mmikebike09</code> and use the code <code>ROLLTRACK</code> while playing :)
         </p>
     </div>
-)
-const tooltipstatic = renderToStaticMarkup(ToolTipContent)
+`
+
 
 export default function Home() {
   return (
@@ -44,11 +49,11 @@ export default function Home() {
           <div className={styles.search}>
             <Searchbar />
           </div>
-            <div data-tooltip-id={"tooltip"} data-tooltip-html={tooltipstatic} className={styles.promocode}>
+            <div data-tooltip-id={"tooltip"} data-tooltip-html={tooltipContent} data-html={true} className={styles.promocode}>
                 <h1>Code: <span>ROLLTRACK</span> & /tip mmikebike09</h1>
             </div>
             <Tooltip id={"tooltip"}
-                     style={{backgroundColor: "#1F202A", color: "white", border: "none", borderRadius: "5px", padding: "20px", fontSize: "1.2rem", zIndex: 1}}
+                     style={{backgroundColor: "#1F202A", color: "white", border: "none", borderRadius: "0.9vw", padding: "20px", fontSize: "1.2rem", zIndex: 1}}
             />
           <div className={styles.affiliation}>
               <Affiliation />

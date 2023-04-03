@@ -17,6 +17,7 @@
     "cookies-next": "^2.1.1",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
+    "html-react-parser": "^3.0.15",
     "next": "^13.2.3",
     "ngrok": "^4.3.3",
     "pocketbase": "^0.12.1",
