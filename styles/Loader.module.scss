@@ -3,41 +3,32 @@
   bottom: 50vh;
   left: 50vw;
 }
+
+
+
+
 .loader {
   position: relative;
-  animation: flix 3s ease-in infinite alternate;
-}
-.loader:before {
-  content: '';
-  display: block;
-  font-size: 0;
   width: 48px;
   height: 48px;
-  background-color: #fff ;
-  background-image:
-          radial-gradient(circle 12px at 22px 22px, #FF3D00 100%, transparent 0),
-          radial-gradient(circle 10px at 6px 40px, #FF3D00 100%, transparent 0),
-          radial-gradient(circle 14px at 31px -6px, #FF3D00 100%, transparent 0),
-          radial-gradient(circle 5px at 40px 30px, #FF3D00 100%, transparent 0);
-  border-radius: 50%;
-  animation: rotate 1s linear infinite;
 }
+.loader:before,
 .loader:after {
-  content: '';
+  content:"";
+  display: block;
+  border: 32px solid transparent;
+  border-top-color: #fff;
   position: absolute;
-  top: 0%;
-  transform: translate(-50% , -100%);
-  left: 50%;
-  width: 24px;
-  height: 12px;
-  background: #fff;
-  border-radius: 50px 50px 0 0;
+  left: 0;
+  top: 0;
+  animation: weld-rotate 2s infinite ease-in;
 }
-
-@keyframes flix {
-  0%  , 60% { transform: rotate(-10deg)}
-  100%  , 30% , 80% { transform: rotate(5deg)}
+.loader:before {
+  border-color: transparent  transparent transparent #FF3D00;
+  animation-delay: 0.5s;
 }
-@keyframes rotate {
-  100%   { transform: rotate(360deg)}
+@keyframes weld-rotate {
+  0% , 25% {transform: rotate(0deg)}
+  50% , 75% {transform: rotate(180deg)}
+  100% {transform: rotate(360deg)}
 }
