@@ -79,7 +79,7 @@ export default function Totals({totals}) {
                 <h1>Total Monthly Profitshare: ${((yrProfitshare) / 12).toFixed(2)}</h1>
             </div>
             <div className={styles.return}>
-                <h1>Total Yearly Return: ${yrProfitshare + yrFreebet}</h1>
+                <h1>Total Yearly Return: ${(yrProfitshare + yrFreebet).toFixed(2)}</h1>
             </div>
         </div>
     );
