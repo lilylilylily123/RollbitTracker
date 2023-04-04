@@ -15,6 +15,7 @@ export function TrackerChild({id, totals, setTotals}) {
     const [robotFull, setRobotFull] = useState({});
     const [loaded, setLoaded] = useState(false);
     const [value, setValue] = useState(0);
+    const [special, setSpecial] = useState(false);
     useEffect(() => {
         setLoaded(false);
         const bobot = letsTryAgain(id)
@@ -25,11 +26,28 @@ export function TrackerChild({id, totals, setTotals}) {
                     })
                 const value = await val;
                 setValue(value);
+                if (value === 1) {
+                    setSpecial(true);
+                    const val2 = getValue(data.robot_json.attributes[0].value)
+                        .then((value) => {
+                            return value;
+                        })
+                    setValue(await val2);
+                    setRobotFull(data);
+                    setTotals(previousState => ({
+                        profitshare: [...previousState.profitshare, value],
+                        freebet: [...previousState.freebet, data.robot_json.attributes[1].value],
+                        yrProfitshare: [...previousState.yrProfitshare, calculateYearlyShare(100, data.robot_json.attributes[3].value, value)],
+                        yrFreebet: [...previousState.yrFreebet, calculateYearlyFreebet(50, data.robot_json.attributes[1].value)]
+                    }))
+                    setLoaded(true);
+                    return;
+                }
                 setRobotFull(data);
                 setTotals(previousState => ({
                     profitshare: [...previousState.profitshare, value],
                     freebet: [...previousState.freebet, data.robot_json.attributes[8].value],
-                    yrProfitshare: [...previousState.yrProfitshare, calculateYearlyShare(100, value, value)],
+                    yrProfitshare: [...previousState.yrProfitshare, calculateYearlyShare(100, data.robot_json.attributes[2].value, value)],
                     yrFreebet: [...previousState.yrFreebet, calculateYearlyFreebet(50, data.robot_json.attributes[8].value)]
                 }))
                 setLoaded(true);
@@ -41,12 +59,20 @@ export function TrackerChild({id, totals, setTotals}) {
     if (robot === undefined) {
         return <TrackNotFound id={id} />
     }
-    const sportshares = robot.attributes[10].value;
+    let sportshares = robot.attributes[10]?.value;
+    if (special) {
+        sportshares = robot.attributes[3].value;
+    }
+
     if (sportshares === undefined) {
         return <TrackNotFound id={id} />
     }
     let yearlyShare = calculateYearlyShare(100, sportshares, value);
-    let yearlyFreebet = calculateYearlyFreebet(50, parseInt(robot.attributes[8].value));
+    let yearlyFreebet = calculateYearlyFreebet(50, parseInt(robot.attributes[8]?.value));
+    if (special) {
+        yearlyShare = calculateYearlyShare(100, sportshares, value);
+        yearlyFreebet = calculateYearlyFreebet(50, parseInt(robot.attributes[1].value));
+    }
     let totalReturn = (parseFloat(yearlyShare) + parseFloat(yearlyFreebet)).toFixed(2);
 
     return (
@@ -60,7 +86,7 @@ export function TrackerChild({id, totals, setTotals}) {
             </div>
             <div className={styles.card_stats}>
                 <h1>${calculateYearlyShare(100, sportshares, value)} -- Yearly Share</h1>
-                <h1>${calculateYearlyFreebet(50, robot.attributes[8].value)} -- Yearly Freebet</h1>
+                <h1>${special ? calculateYearlyFreebet(50, robot.attributes[1].value) : calculateYearlyFreebet(50, robot.attributes[8].value) } -- Yearly Freebet</h1>
                 <h1 className={styles.yr_return}>${totalReturn} -- Total Yearly Return</h1>
             </div>
         </div>

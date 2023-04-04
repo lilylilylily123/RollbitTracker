@@ -173,7 +173,7 @@ export const getServerSideProps = async (ctx) => {
     };
 };
 
-function appendToStorage(name, data) {
+export function appendToStorage(name, data) {
     let old = localStorage.getItem(name);
     if (old === null) old = "";
     localStorage.setItem(name, old + data);

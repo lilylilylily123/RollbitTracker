@@ -30,3 +30,26 @@
   margin: 2vw;
   border-radius: 15px;
 }
+
+.favorite_button {
+  margin-top: 1vh;
+  margin-left: -8vw;
+  display: flex;
+  align-self: flex-start;
+  border: none;
+  background-color: #3B3E50;
+  border-radius: 15px;
+  color: white;
+  scale: 140%;
+  font-family: 'Questrial', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.06s;
+  padding: 1vw;
+  user-select: none;
+  &:hover {
+    background-color: #6e7183;
+    //color: #3B3E50;
+  }
+}
