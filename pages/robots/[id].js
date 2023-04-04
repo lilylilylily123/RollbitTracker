@@ -12,6 +12,7 @@ import Head from "next/head";
 import {AiFillStar} from "react-icons/ai";
 import RoiCalculator from "@/components/CALCS/RoiCalculator/RoiCalculator";
 import Nav from "@/components/Navbar/Nav";
+import Special from "@/components/OTHER/SpecialRobot/Special";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -68,7 +69,7 @@ const DisplayRobot = ({robotFull, value}) => {
         return <RobotNotFound id={id}/>
     }
     if (value === 1) {
-        return
+        return <Special id={id} robotFull={robotFull}/>
     }
     const robot = robotFull.robot_json
     const traits = robot.attributes
@@ -160,6 +161,7 @@ export const getServerSideProps = async (ctx) => {
     if (robotFull.robot_json.attributes === undefined) return {props: {robotFull: initialRobot, value: 0}}
     const sport = robotFull.robot_json.attributes[2].value
     const value = await getValue(sport)
+
     if (value === "Special") {
         return {props: {robotFull: initialRobot, value: 1}}
     }

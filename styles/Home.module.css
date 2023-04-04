@@ -98,8 +98,9 @@
   background-color: #262736;
   font-family: Questrial, sans-serif;
   font-weight: 600;
-  z-index: 1;
   padding: 1vw;
+  font-size: 1vw;
+  border-radius: 15px;
 }
 
 /*# sourceMappingURL=Home.module.css.map */

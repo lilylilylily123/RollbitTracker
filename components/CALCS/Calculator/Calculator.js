@@ -28,13 +28,13 @@ export default function Calculator({fullRobot, setReturn, value}) {
     );
 }
 
-function calculateYearlyShare(share, sportshares, value) {
+export function calculateYearlyShare(share, sportshares, value) {
     const perShare = value.toFixed(2) / sportshares;
     const sharePercentage = share / 100;
     return (perShare.toFixed(1) * sportshares * 12  * sharePercentage).toFixed(2);
 }
 
-function calculateYearlyFreebet(bet, freebet) {
+export function calculateYearlyFreebet(bet, freebet) {
     const betPercentage = bet / 100;
     return (freebet * 12 * betPercentage).toFixed(2);
 }
