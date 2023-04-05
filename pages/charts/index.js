@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import styles from "./chart.module.scss"
 import SevenDayStats from "@/components/CHART_COMPS/SevenDay/SevenDayStats";
 import Volume from "@/components/CHART_COMPS/SevenDay/Volume/Volume";
@@ -46,6 +46,7 @@ export default function Chart() {
     const [sevendaystats, setSevenDayStats] = useState([])
     const [thirtydaystats, setThirtyDayStats] = useState([])
     const [daystats, setDayStats] = useState([])
+    const [chart, setChart] = useState("")
 
     useEffect(() => {
         setLoading(true)
@@ -73,10 +74,19 @@ export default function Chart() {
                 setLoading(false)
             })
     }, [])
+    const onSelectChange = useCallback((event) => {
+        setChart(event.target.value)
+    }, []);
+
     return (
         <div className={styles.containers}>
-            <Volume SevenVolume={sevendaystats[0]} ThirtyVolume={thirtydaystats[0]} DayVolume={daystats[0]}/>
-            <Sales Seven={sevendaystats[1]} Thirty={thirtydaystats[1]} One={daystats[1]}/>
+            <select className={styles.select} onChange={onSelectChange}>
+                <option value="sales">Sales</option>
+                <option value="volume">Volume</option>
+            </select>
+
+            {chart === "sales" ? <Sales Seven={sevendaystats[1]} Thirty={thirtydaystats[1]} One={daystats[1]}/> : <></>}
+            {chart === "volume" ? <Volume SevenVolume={sevendaystats[0]} ThirtyVolume={thirtydaystats[0]} DayVolume={daystats[0]}/> : <></>}
         </div>
     )
 }

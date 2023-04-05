@@ -13,6 +13,7 @@ import {AiFillStar} from "react-icons/ai";
 import RoiCalculator from "@/components/CALCS/RoiCalculator/RoiCalculator";
 import Nav from "@/components/Navbar/Nav";
 import Special from "@/components/OTHER/SpecialRobot/Special";
+import Ukranium from "@/components/OTHER/SpecialRobot/Ukranium/ukranium";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -70,6 +71,10 @@ const DisplayRobot = ({robotFull, value}) => {
     }
     if (value === 1) {
         return <Special id={id} robotFull={robotFull}/>
+    }
+    console.log(value)
+    if (value === -1) {
+        return <Ukranium />
     }
     const robot = robotFull.robot_json
     const traits = robot.attributes
@@ -154,23 +159,35 @@ export default DisplayRobot;
 
 export const getServerSideProps = async (ctx) => {
     const id = ctx.query.id;
-    const robotFull = await letsTryAgain(id)
-        .then(async (data) => {
-            return data;
-        })
-    if (robotFull.robot_json.attributes === undefined) return {props: {robotFull: initialRobot, value: 0}}
-    const sport = robotFull.robot_json.attributes[2].value
-    const value = await getValue(sport)
-
-    if (value === "Special") {
-        return {props: {robotFull: initialRobot, value: 1}}
+    console.log(id)
+    if (parseInt(id) === 10001) {
+        const robotFull = {
+            data: [],
+            records: [],
+            robot_json: [],
+            robot_id: 10001,
+        }
+        return {props: {robotFull, value: -1}}
     }
-    return {
-        props: {
-            value,
-            robotFull,
-        },
-    };
+    else {
+        const robotFull = await letsTryAgain(id)
+            .then(async (data) => {
+                return data;
+            })
+        if (robotFull.robot_json.attributes === undefined) return {props: {robotFull: initialRobot, value: 0}}
+        const sport = robotFull.robot_json.attributes[2].value
+        const value = await getValue(sport)
+
+        if (value === "Special") {
+            return {props: {robotFull: initialRobot, value: 1}}
+        }
+        return {
+            props: {
+                value,
+                robotFull,
+            },
+        };
+    }
 };
 
 export function appendToStorage(name, data) {

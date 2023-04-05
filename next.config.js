@@ -3,7 +3,7 @@ const nextConfig = {
   // reactStrictMode: true,
   swcMinify: false,
   images: {
-    domains: ['sportsbot.rollbot.com'],
+    domains: ['sportsbot.rollbot.com', 'i.seadn.io'],
 },
 }
 
