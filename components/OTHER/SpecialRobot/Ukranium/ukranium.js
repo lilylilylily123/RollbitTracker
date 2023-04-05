@@ -10,9 +10,9 @@ export default function Ukranium() {
             </div>
             <div className={styles.body}>
                <p>
-                   This 1/1 Special Sports Rollbot will be auctioned on OpenSea. 100% of the proceeds will go to Ukraine's official ETH donation address. This Sports Rollbot will have maximum utility benefits on Rollbot.com / Rollbit.com. This Rollbot will be part of the 10,000 Sports Rollbots collection.
+                   This 1/1 Special Sports Rollbot will be auctioned on OpenSea. 100% of the proceeds will go to Ukraine&apos;s official ETH donation address. This Sports Rollbot will have maximum utility benefits on Rollbot.com / Rollbit.com. This Rollbot will be part of the 10,000 Sports Rollbots collection.
                    The winner will be airdropped 10 Sports Rollbots, 10 V1 Rollbots, and 10,000,000 RLB.
-                   Rollbit will endeavour to add extra benefits for the winner, which won't be available to other Rollbot holders.
+                   Rollbit will endeavour to add extra benefits for the winner, which won&apos;t be available to other Rollbot holders.
                    #PrayForUkraine
                </p>
                 <a className={styles.link} href={"https://opensea.io/assets/ethereum/0x1de7abda2d73a01aa8dca505bdcb773841211daf/380"}>Full Link</a>
