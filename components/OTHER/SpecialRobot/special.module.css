@@ -1,0 +1,58 @@
+.container {
+  margin: 2vw;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background-color: #1F202A;
+  padding: 1vw;
+  border-radius: 17px;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5vw;
+  font-family: Questrial, sans-serif;
+}
+
+.image {
+  border-radius: 16px;
+}
+
+.imgchild {
+  border-radius: 16px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  text-align: center;
+  background-color: #262736;
+  height: fit-content;
+  padding: 1vw;
+  margin: 2vw;
+  border-radius: 15px;
+}
+
+.favorite_button {
+  margin-top: 1vh;
+  margin-left: -8vw;
+  display: flex;
+  align-self: flex-start;
+  border: none;
+  background-color: #3B3E50;
+  border-radius: 15px;
+  color: white;
+  scale: 140%;
+  font-family: "Questrial", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.06s;
+  padding: 1vw;
+  user-select: none;
+}
+.favorite_button:hover {
+  background-color: #6e7183;
+}
+
+/*# sourceMappingURL=special.module.css.map */

@@ -1,0 +1,28 @@
+.container {
+  background-color: #1F202A;
+  margin: 3vw;
+  border-radius: 1vw;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5vw;
+  font-family: Questrial, sans-serif;
+  text-align: center;
+  padding: 1vw;
+}
+
+.text {
+  border: 5px solid #fde79e;
+  border-radius: 1vw;
+  padding: 1vw;
+}
+
+.text > h2 {
+  border: 3px solid #3B3E50;
+  padding: 1vw;
+  border-radius: 16px;
+  margin-top: 0.5vw;
+}
+
+/*# sourceMappingURL=specialroi.module.css.map */
