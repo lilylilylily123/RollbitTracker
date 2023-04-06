@@ -1,6 +1,6 @@
 import styles from "./perskin.module.scss"
 import React, {useEffect} from 'react';
-import PerskinChart from "@/components/CHART_COMPS/PerSkin/perskinChart";
+import PerskinChart from "/components/CHART_COMPS/PerSkin/perskinChart";
 
 
 
