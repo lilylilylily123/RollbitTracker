@@ -1,0 +1,14 @@
+.container {
+  width: calc(100% - 4vw);
+  height: 100%;
+  margin: 2vw;
+  background-color: #1F202A;
+}
+
+.chart {
+  width: 90%;
+  height: 90%;
+  margin: 2vw;
+}
+
+/*# sourceMappingURL=TotalSportshares.module.css.map */

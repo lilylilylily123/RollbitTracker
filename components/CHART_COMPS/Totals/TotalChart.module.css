@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card {
+  color: white;
+  text-align: center;
+  font-family: Questrial, sans-serif;
+  margin: 2vw;
+  padding: 2vw;
+  border-radius: 14px;
+  background-color: #262736;
+}
+
+.card > h2 {
+  text-decoration: underline 3px #fde79e;
+}
+
+.legend {
+  color: white;
+  text-align: center;
+  font-family: Questrial, sans-serif;
+  font-size: 1.3rem;
+  border: 5px solid #3B3E50;
+  border-radius: 18px;
+  padding: 1vw;
+  background-color: #262736;
+}
+
+/*# sourceMappingURL=TotalChart.module.css.map */

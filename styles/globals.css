@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: #171821;
+}
+
+::selection {
+  background-color: #22224b;
+  color: #8d9fe7;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#__next {
+  min-height: 100vh;
+}
+
+/*# sourceMappingURL=globals.css.map */

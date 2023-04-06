@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  color: white;
+  font-family: Questrial, sans-serif;
+}
+
+.title {
+  outline: 10px solid #262736;
+  padding: 1vw;
+  font-size: 1.5rem;
+  margin: 2vw;
+  border-radius: 25px;
+}
+
+/*# sourceMappingURL=current.module.css.map */
