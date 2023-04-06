@@ -3,7 +3,7 @@ import PocketBase from "pocketbase";
 export default async function handler(request, response) {
     const start = new Date();
     const pb = new PocketBase('https://rollbit.pockethost.io');
-    await pb.admins.authWithPassword("aksg656@icloud.com", "goatGoat7&");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "goatGoat7&");
     pb.autoCancellation(false)
     const arr = [
         8009,
