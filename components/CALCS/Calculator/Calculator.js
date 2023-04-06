@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import {useState} from "react";
-import Searchbar from "@/components/Searchbar/Searchbar";
 
 export default function Calculator({fullRobot, setReturn, value}) {
     const [share, setShare] = useState(100);

@@ -1,9 +1,9 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.scss";
-import Searchbar from "@/components/Searchbar/Searchbar";
-import Affiliation from "@/components/OTHER/Affiliation/Affiliation";
+import styles from "/styles/Home.module.scss";
+import Searchbar from "/components/Searchbar/Searchbar";
+import Affiliation from "/components/OTHER/Affiliation/Affiliation";
 import Image from "next/image";
-import Nav from "@/components/Navbar/Nav";
+import Nav from "/components/Navbar/Nav";
 import {Tooltip} from "react-tooltip";
 import {renderToStaticMarkup} from "react-dom/server";
 import 'react-tooltip/dist/react-tooltip.css';

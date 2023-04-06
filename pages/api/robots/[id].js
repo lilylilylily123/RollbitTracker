@@ -1,5 +1,5 @@
 import PocketBase from "pocketbase";
-import {createBot} from "@/pages/api/db/create/[id]";
+import {createBot} from "/pages/api/db/create/[id]";
 import {create} from "axios";
 
 const pb = new PocketBase('https://rollbit.pockethost.io');

@@ -1,9 +1,9 @@
 import {useCallback, useEffect, useState} from "react";
 import styles from "./chart.module.scss"
-import SevenDayStats from "@/components/CHART_COMPS/SevenDay/SevenDayStats";
-import Volume from "@/components/CHART_COMPS/SevenDay/Volume/Volume";
+import SevenDayStats from "/components/CHART_COMPS/SevenDay/SevenDayStats";
+import Volume from "/components/CHART_COMPS/SevenDay/Volume/Volume";
 import {Span} from "next/dist/server/lib/trace/tracer";
-import Sales from "@/components/CHART_COMPS/SevenDay/Sales/Sales";
+import Sales from "/components/CHART_COMPS/SevenDay/Sales/Sales";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -14,7 +14,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import Nav from "@/components/Navbar/Nav";
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -23,6 +22,9 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+import TotalChart from "/components/CHART_COMPS/Totals/TotalChart"
+import TotalSportshares from "/components/CHART_COMPS/TotalSportshares/TotalSportshares";
+import PerSkin from "/components/CHART_COMPS/PerSkin/PerSkin";
 
 
 
@@ -46,7 +48,7 @@ export default function Chart() {
     const [sevendaystats, setSevenDayStats] = useState([])
     const [thirtydaystats, setThirtyDayStats] = useState([])
     const [daystats, setDayStats] = useState([])
-    const [chart, setChart] = useState("")
+    const [chart, setChart] = useState("sales")
 
     useEffect(() => {
         setLoading(true)
@@ -83,10 +85,14 @@ export default function Chart() {
             <select className={styles.select} onChange={onSelectChange}>
                 <option value="sales">Sales</option>
                 <option value="volume">Volume</option>
+                <option value={"perskin"}>Per Skin</option>
+                <option value={"totalsportshares"}>Total Sport Shares</option>
             </select>
 
             {chart === "sales" ? <Sales Seven={sevendaystats[1]} Thirty={thirtydaystats[1]} One={daystats[1]}/> : <></>}
             {chart === "volume" ? <Volume SevenVolume={sevendaystats[0]} ThirtyVolume={thirtydaystats[0]} DayVolume={daystats[0]}/> : <></>}
+            {chart === "totalsportshares" ? <TotalSportshares /> : <></>}
+            {chart === "perskin" ? <PerSkin /> : <></>}
         </div>
     )
 }

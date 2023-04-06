@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from "react";
 import Image from "next/image";
-import styles from "@/styles/DisplayRobot.module.scss";
-import RobotNotFound from "@/components/OTHER/RobotNotFound/notFound";
+import styles from "/styles/DisplayRobot.module.scss";
+import RobotNotFound from "/components/OTHER/RobotNotFound/notFound";
 import {useRouter} from "next/router";
-import Calculator from "@/components/CALCS/Calculator/Calculator.js";
-import Loader from "@/components/OTHER/Loader";
+import Calculator from "/components/CALCS/Calculator/Calculator.js";
+import Loader from "/components/OTHER/Loader";
 import PocketBase from "pocketbase";
-import {getData, getValue, letsTryAgain} from "@/pages/api/robots/[id]";
-import Info from "@/components/OTHER/Info";
+import {getData, getValue, letsTryAgain} from "/pages/api/robots/[id]";
+import Info from "/components/OTHER/Info";
 import Head from "next/head";
 import {AiFillStar} from "react-icons/ai";
-import RoiCalculator from "@/components/CALCS/RoiCalculator/RoiCalculator";
-import Nav from "@/components/Navbar/Nav";
-import Special from "@/components/OTHER/SpecialRobot/Special";
-import Ukranium from "@/components/OTHER/SpecialRobot/Ukranium/ukranium";
+import RoiCalculator from "/components/CALCS/RoiCalculator/RoiCalculator";
+import Special from "/components/OTHER/SpecialRobot/Special";
+import Ukranium from "/components/OTHER/SpecialRobot/Ukranium/ukranium";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 

@@ -1,12 +1,12 @@
-import '@/styles/globals.scss'
+import '/styles/globals.scss'
 import Router, {useRouter} from 'next/router'
 import {useEffect, useState} from "react";
-import Loader from "@/components/OTHER/Loader";
+import Loader from "/components/OTHER/Loader";
 import Head from "next/head";
-import {usePageLoading} from "@/components/OTHER/pageLoad";
+import {usePageLoading} from "/components/OTHER/pageLoad";
 import {DevSupport} from "@react-buddy/ide-toolbox-next";
-import {ComponentPreviews, useInitial} from "@/components/dev";
-import Layout from "@/components/layout";
+import {ComponentPreviews, useInitial} from "/components/dev";
+import Layout from "/components/layout";
 
 export default function App({Component, pageProps}) {
     const [loading, setLoading] = useState(true);

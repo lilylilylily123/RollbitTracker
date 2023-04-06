@@ -1,7 +1,7 @@
 import styles from "./specialroi.module.scss";
-import RoiCalculator from "@/components/CALCS/RoiCalculator/RoiCalculator";
-import {calculateYearlyFreebet, calculateYearlyShare} from "@/components/CALCS/Calculator/Calculator";
-import {getValue} from "@/pages/api/robots/[id]";
+import RoiCalculator from "/components/CALCS/RoiCalculator/RoiCalculator";
+import {calculateYearlyFreebet, calculateYearlyShare} from "/components/CALCS/Calculator/Calculator";
+import {getValue} from "/pages/api/robots/[id]";
 import {useState} from "react";
 
 export default function SpecialROI({fullRobot}) {

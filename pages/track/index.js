@@ -1,12 +1,10 @@
-import DisplayRobot from "@/pages/robots/[id]";
 import styles from "./track.module.scss";
-import {getData} from "@/pages/api/robots/[id]";
-import {TrackerChild} from "@/components/CALCS/Tracker/tracker";
+import {TrackerChild} from "/components/CALCS/Tracker/tracker";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import Loader from "@/components/OTHER/Loader";
-import Fav from "@/components/FavsNotFound/Fav";
-import Totals from "@/components/CALCS/Totals/Totals";
+import Loader from "/components/OTHER/Loader";
+import Fav from "/components/FavsNotFound/Fav";
+import Totals from "/components/CALCS/Totals/Totals";
 function Tracker() {
     const router = useRouter();
     const [loaded, setLoaded] = useState(false);

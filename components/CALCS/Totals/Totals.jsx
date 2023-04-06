@@ -1,6 +1,6 @@
 import styles from './Totals.module.scss';
 import {useEffect, useState} from "react";
-import Loader from "@/components/OTHER/Loader";
+import Loader from "/components/OTHER/Loader";
 
 export default function Totals({totals}) {
     const [loading, setLoading] = useState(false);

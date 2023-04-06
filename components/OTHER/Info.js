@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import styles from "@/styles/DisplayRobot.module.scss";
+import styles from "/styles/DisplayRobot.module.scss";
 
 const Info = ({trait}) => {
     const [x, setX] = useState([]);

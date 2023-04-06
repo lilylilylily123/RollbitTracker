@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Calculator from "@/components/CALCS/Calculator/Calculator";
-import styles from "./special.module.scss"
-import SpecialROI from "@/components/OTHER/SpecialRobot/SpecialROI/SpecialROI";
-import {appendToStorage} from "@/pages/robots/[id]";
+import styles from "./special.module.scss";
+import SpecialROI from "/components/OTHER/SpecialRobot/SpecialROI/SpecialROI";
+import {appendToStorage} from "/pages/robots/[id]";
 import {useEffect, useState} from "react";
 import {AiFillStar} from "react-icons/ai";
 
