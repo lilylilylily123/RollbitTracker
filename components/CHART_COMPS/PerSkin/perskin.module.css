@@ -32,4 +32,10 @@
   height: 100%;
 }
 
+@media (max-width: 768px) {
+  .select_container {
+    flex-direction: column;
+  }
+}
+
 /*# sourceMappingURL=perskin.module.css.map */

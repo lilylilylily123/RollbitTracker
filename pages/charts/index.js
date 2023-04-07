@@ -86,12 +86,12 @@ export default function Chart() {
                 <option value="sales">Sales</option>
                 <option value="volume">Volume</option>
                 <option value={"perskin"}>Per Skin</option>
-                <option value={"totalsportshares"}>Total Sport Shares</option>
+                <option value={"distro"}>Distribution</option>
             </select>
 
             {chart === "sales" ? <Sales Seven={sevendaystats[1]} Thirty={thirtydaystats[1]} One={daystats[1]}/> : <></>}
             {chart === "volume" ? <Volume SevenVolume={sevendaystats[0]} ThirtyVolume={thirtydaystats[0]} DayVolume={daystats[0]}/> : <></>}
-            {chart === "totalsportshares" ? <TotalSportshares /> : <></>}
+            {chart === "distro" ? <TotalSportshares /> : <></>}
             {chart === "perskin" ? <PerSkin /> : <></>}
         </div>
     )

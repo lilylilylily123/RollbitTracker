@@ -41,11 +41,14 @@
 }
 @media (max-width: 768px) {
   .topnav {
+    flex-wrap: wrap;
     margin: 4vw;
+    font-size: 50%;
     //width: fit-content;
     height: fit-content;
     align-items: center;
-    //justify-content: center;
+    justify-content: center;
+    gap: 20px;
   }
   .searchbar {
     display: none;

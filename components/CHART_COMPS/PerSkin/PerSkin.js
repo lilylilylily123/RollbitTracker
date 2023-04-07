@@ -47,7 +47,7 @@ export default function PerSkin() {
                 </select>
             </div>
             <div className={styles.chart_container}>
-                {loading ? <PerskinChart mult={mult} option={option} datas={datas} /> : <div>Loading...</div>}
+                {loading ? <PerskinChart mult={mult} option={option} datas={datas} /> :<></>}
             </div>
         </div>
     )

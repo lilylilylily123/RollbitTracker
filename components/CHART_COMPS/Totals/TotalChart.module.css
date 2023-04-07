@@ -24,8 +24,10 @@
   background-color: #262736;
 }
 
-.card > h2 {
-  text-decoration: underline 3px #fde79e;
+.card > ul > h2 {
+  display: list-item;
+  list-style-position: inside;
+  text-decoration: underline 3px;
 }
 
 .legend {
@@ -37,6 +39,43 @@
   border-radius: 18px;
   padding: 1vw;
   background-color: #262736;
+}
+
+.legend > h1 {
+  margin: 1vw;
+  text-decoration: underline 3px;
+}
+
+.one {
+  color: white;
+}
+
+.four {
+  color: yellow;
+}
+
+.five {
+  color: lightblue;
+}
+
+.six {
+  color: orange;
+}
+
+.seven {
+  color: pink;
+}
+
+.list {
+  list-style-type: square;
+}
+
+.two {
+  list-style-type: disc;
+}
+
+.three {
+  list-style-type: circle;
 }
 
 /*# sourceMappingURL=TotalChart.module.css.map */

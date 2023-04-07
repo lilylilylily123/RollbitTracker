@@ -2,7 +2,7 @@ import styles from './nav.module.scss';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 
-export default function Nav({search, track, color, chart}) {
+export default function Nav({search, track, color, chart, current}) {
     const router = useRouter();
     const {id} = router.query;
     return (
@@ -20,6 +20,11 @@ export default function Nav({search, track, color, chart}) {
             {chart && (
                 <Link href={`/charts/`}>
                     <h1 className={styles.link}>Charts</h1>
+                </Link>
+            )}
+            {current && (
+                <Link href={`/current/`}>
+                    <h1 className={styles.link}>Current</h1>
                 </Link>
             )}
         </div>
