@@ -44,8 +44,8 @@ export default function TotalChart() {
                         <h1>🤖 {d[0]}</h1>
                         <h2>💯 {d[1].toFixed(2)}</h2>
                         <h2>🚗 {d[2].toFixed(2)}</h2>
-                        <h2>🚶‍ {((d[4] / d[3]) * 100).toFixed(2)}%</h2>
-                        <h2>🏃 {((d[5] / d[3]) * 100).toFixed(2)}%</h2>
+                        <h2>🚷 {(100 - ((d[4] / d[3]) * 100)).toFixed(2)}%</h2>
+                        <h2>🏃 {(100 - ((d[5] / d[3]) * 100)).toFixed(2)}%</h2>
                         <h2>🌊 ${d[3].toFixed(2)}</h2>
                         <h2>💰 ${(d[2] * d[3]).toFixed(2)}</h2>
                     </div>

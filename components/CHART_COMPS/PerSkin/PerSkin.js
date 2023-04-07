@@ -27,7 +27,7 @@ export default function PerSkin() {
                 setLoading(true);
             }
         );
-    }, [])
+    }, []);
 
     return (
         <div className={styles.container}>
