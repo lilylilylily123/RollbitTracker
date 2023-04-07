@@ -14,7 +14,7 @@ const tooltip = (
     <p>
     This project will NEVER be paywalled. It was made with the sole intention of giving back to the Rollbit community. <br/>
     If you would like to support the project, please use the code <code>ROLLTRACK</code> and <code>/tip mmikebike09</code>. <br/>
-    I&apos;d also like to thank my dev <code>goat</code> for all their amazing work on this project. <br/>
+    I&apos;d also like to thank my dev <code>goat#2017</code> for all their amazing work on this project. <br/>
     </p>
 </div>
 )
@@ -39,7 +39,7 @@ export default function Home() {
             <Searchbar />
           </div>
 
-            <div data-tooltip-html={tooltip2} data-tooltip-delay-hide={2000} data-tooltip-offset={20} data-tooltip-id={"promo"} className={styles.promocode}>
+            <div data-tooltip-html={tooltip2} data-tooltip-offset={20} data-tooltip-id={"promo"} className={styles.promocode}>
                 <h1>Code: <span>ROLLTRACK</span> & /tip mmikebike09</h1>
             </div>
             <Tooltip id={"promo"} style={

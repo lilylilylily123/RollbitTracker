@@ -13,6 +13,7 @@ import {AiFillStar} from "react-icons/ai";
 import RoiCalculator from "/components/CALCS/RoiCalculator/RoiCalculator";
 import Special from "/components/OTHER/SpecialRobot/Special";
 import Ukranium from "/components/OTHER/SpecialRobot/Ukranium/ukranium";
+import Updating from "/components/OTHER/Updating/updating";
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -64,14 +65,15 @@ const DisplayRobot = ({robotFull, value}) => {
     }, [favorite, id, robotFull.robot_id]);
     const [returnValue, setReturn] = useState(0);
     //*to here
-
+    if (value === -2) {
+        return <Updating fullRobot={robotFull} sport={robotFull.robot_json.attributes[2].value}/>
+    }
     if (value === 0) {
         return <RobotNotFound id={id}/>
     }
     if (value === 1) {
         return <Special id={id} robotFull={robotFull}/>
     }
-    console.log(value)
     if (value === -1) {
         return <Ukranium />
     }
@@ -145,9 +147,6 @@ const DisplayRobot = ({robotFull, value}) => {
                 <div className={styles.roi_calc_container}>
                     <RoiCalculator returnValue={returnValue}/>
                 </div>
-                {/*<div className={styles.navigation_container}>*/}
-                {/*    <Nav track={true} search={true} color={"#1F202A"}/>*/}
-                {/*</div>*/}
             </div>
         </div>
     );
@@ -158,7 +157,6 @@ export default DisplayRobot;
 
 export const getServerSideProps = async (ctx) => {
     const id = ctx.query.id;
-    console.log(id)
     if (parseInt(id) === 10001) {
         const robotFull = {
             data: [],

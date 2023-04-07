@@ -25,6 +25,7 @@ ChartJS.register(
 import TotalChart from "/components/CHART_COMPS/Totals/TotalChart"
 import TotalSportshares from "/components/CHART_COMPS/TotalSportshares/TotalSportshares";
 import PerSkin from "/components/CHART_COMPS/PerSkin/PerSkin";
+import HistoricalTotalChart from "/components/CHART_COMPS/totalValuesHistorical/totalchart";
 
 
 
@@ -84,6 +85,7 @@ export default function Chart() {
         <div className={styles.containers}>
             <select className={styles.select} onChange={onSelectChange}>
                 <option value="sales">Sales</option>
+                <option value={"total"}>Total</option>
                 <option value="volume">Volume</option>
                 <option value={"perskin"}>Per Skin</option>
                 <option value={"distro"}>Distribution</option>
@@ -93,6 +95,7 @@ export default function Chart() {
             {chart === "volume" ? <Volume SevenVolume={sevendaystats[0]} ThirtyVolume={thirtydaystats[0]} DayVolume={daystats[0]}/> : <></>}
             {chart === "distro" ? <TotalSportshares /> : <></>}
             {chart === "perskin" ? <PerSkin /> : <></>}
+            {chart === "total" ? <HistoricalTotalChart /> : <></>}
         </div>
     )
 }
