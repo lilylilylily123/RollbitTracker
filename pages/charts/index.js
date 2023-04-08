@@ -49,7 +49,7 @@ export default function Chart() {
     const [sevendaystats, setSevenDayStats] = useState([])
     const [thirtydaystats, setThirtyDayStats] = useState([])
     const [daystats, setDayStats] = useState([])
-    const [chart, setChart] = useState("sales")
+    const [chart, setChart] = useState("total")
 
     useEffect(() => {
         setLoading(true)
@@ -84,11 +84,11 @@ export default function Chart() {
     return (
         <div className={styles.containers}>
             <select className={styles.select} onChange={onSelectChange}>
-                <option value="sales">Sales</option>
                 <option value={"total"}>Total</option>
-                <option value="volume">Volume</option>
                 <option value={"perskin"}>Per Skin</option>
                 <option value={"distro"}>Distribution</option>
+                <option value="volume">Volume</option>
+                <option value="sales">Sales</option>
             </select>
 
             {chart === "sales" ? <Sales Seven={sevendaystats[1]} Thirty={thirtydaystats[1]} One={daystats[1]}/> : <></>}
