@@ -32,7 +32,7 @@ export default async function handler(request, response) {
                 }
                 await pb.collection('robot_historical').create(dataDB);
             })
-        await timer(15 * 1000)
+        await timer(20 * 1000)
     }
     const end = new Date();
     const time = end - start;
