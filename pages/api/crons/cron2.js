@@ -1,8 +1,9 @@
 import PocketBase from "pocketbase";
+const pb = new PocketBase('https://rollbit.pockethost.io');
+
 
 export default async function handler(request, response) {
     const start = new Date();
-    const pb = new PocketBase('https://rollbit.pockethost.io');
     await pb.admins.authWithPassword("cfrugal11@gmail.com", "goatGoat7&");
     pb.autoCancellation(false)
     const arr = [
@@ -18,12 +19,6 @@ export default async function handler(request, response) {
             .then((res) => res.json())
             .then(async (data) => {
                 console.log(index)
-                if (data.sportsbot.traits === undefined) {
-                    data.sportsbot.traits = "retry"
-                }
-                if (data.sportsbot.traits.sport === undefined) {
-                    data.sportsbot.traits.sport = "retry"
-                }
                 console.log(data.sportsbot.traits.sport)
                 const dataDB = {
                     "robot_json": data,
@@ -40,9 +35,9 @@ export default async function handler(request, response) {
     response.status(200).json({timefordata: time});
 }
 
-async function deleteHistory(id, pb) {
+async function deleteHistory(id) {
     await pb.collection('robot_historical').getFirstListItem('robot_id = ' + id, {
-            limit: 1,
+            // limit: 1,
         }
     )
         .then(async (records) => {
