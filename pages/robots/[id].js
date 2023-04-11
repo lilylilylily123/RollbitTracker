@@ -174,7 +174,6 @@ export const getServerSideProps = async (ctx) => {
         if (robotFull.robot_json.attributes === undefined) return {props: {robotFull: initialRobot, value: 0}}
         const sport = robotFull.robot_json.attributes[2].value
         const value = await getValue(sport)
-
         if (value === "Special") {
             return {props: {robotFull: initialRobot, value: 1}}
         }

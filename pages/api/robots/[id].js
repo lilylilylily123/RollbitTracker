@@ -70,3 +70,12 @@ export async function getValue(sport) {
     }
     return value;
 }
+async function deleteRobot(id) {
+    await pb.collection('robots_v2').getFirstListItem('robot_id = ' + id, {
+            // limit: 1,
+        }
+    )
+        .then(async (records) => {
+            await pb.collection('robots_v2').delete(records.id)
+        })
+}
