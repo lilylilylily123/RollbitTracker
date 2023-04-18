@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import styles from "./TotalChart.module.scss";
 import {color} from "chart.js/helpers";
 type ChartRecord = {
-    thing: {
+    uniqueArray: {
         sport: string,
         amount: number,
         shares: number,
@@ -20,11 +20,12 @@ export default function TotalChart() {
         const fetchTotal = async () => {
             const response = await fetch('/api/total')
             const data: ChartRecord = await response.json()
+            console.log(data)
             return data
         }
         fetchTotal()
             .then((r) => {
-                const arr = (r.thing)
+                const arr = (r.uniqueArray)
                 setData(arr)
             })
 

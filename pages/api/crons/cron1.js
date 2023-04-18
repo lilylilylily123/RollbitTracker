@@ -3,7 +3,7 @@ const pb = new PocketBase('https://rollbit.pockethost.io');
 
 export default async function handler(request, response) {
     const start = new Date();
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "goatGoat7&");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
     pb.autoCancellation(false)
     const arr = [
         8009,
@@ -32,23 +32,23 @@ export default async function handler(request, response) {
                     "robot_id": value,
                     "sport": data.sportsbot.traits.sport,
                 }
-                await pb.collection('robot_historical').create(dataDB);
+                await pb.collection('testing').create(dataDB);
             })
         await timer(20 * 1000)
     }
     const end = new Date();
     const time = end - start;
     console.log(time)
-    response.status(200).json({timefordata: time});
+    response.status(200).json({timefordata: time * 0.001 + "s"});
 }
 
 async function deleteHistory(id, pb) {
-    await pb.collection('robot_historical').getFirstListItem('robot_id = ' + id, {
+    await pb.collection('testing').getFirstListItem('robot_id = ' + id, {
             // limit: 1,
         }
     )
         .then(async (records) => {
-            await pb.collection('robot_historical').delete(records.id)
+            await pb.collection('testing').delete(records.id)
         })
         .catch(async (err) => {
             console.log("robot_id " + id + " not found in robot_historical")

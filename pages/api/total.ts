@@ -21,5 +21,8 @@ export default async function handler(req, res) {
            })
         }
     )})
-    res.status(200).json({thing, total: record.length})
+    const uniqueArray = thing.filter((item, index, self) => {
+        return self.findIndex(innerItem => innerItem[0] === item[0]) === index;
+    });
+    res.status(200).json({uniqueArray, total: record.length})
 }

@@ -17,7 +17,7 @@ export default function PerSkin() {
         fetch('/api/total')
             .then((res) => res.json())
             .then((data) => {
-                const r = data.thing;
+                const r = data.uniqueArray;
                 for (let i = 0; i < r.length; i++) {
                     setLabels((prev) => [...prev, r[i][0]]);
                 }

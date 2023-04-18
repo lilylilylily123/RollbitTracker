@@ -16,23 +16,35 @@ export function TrackerChild({id, totals, setTotals}) {
     const [special, setSpecial] = useState(false);
     useEffect(() => {
         setLoaded(false);
-        const bobot = letsTryAgain(id)
+        const bobot = fetch(`https://sportsbot.rollbit.com/metadata/${id}`)
+            .then((response) => {
+                return response.json();
+            })
             .then(async (data) => {
-                const val = getValue(data.robot_json.attributes[2].value)
+                const val = fetch(`/api/values/${data.attributes[2].value}`)
+                    .then((response) => {
+                        return response.json();
+                    })
                     .then((value) => {
-                        return value;
+                        return value.value;
                     })
                 const value = await val;
                 setValue(value);
                 if (value === 1) {
                     setSpecial(true);
-                    const val2 = getValue(data.robot_json.attributes[0].value)
+                    const val2 = fetch(`/api/values/${data.attributes[0].value}`)
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((value) => {
+                            return value.value;
+                        })
                         .then((value) => {
                             setTotals(previousState => ({
                                 profitshare: [...previousState.profitshare, value],
-                                freebet: [...previousState.freebet, data.robot_json.attributes[1].value],
+                                freebet: [...previousState.freebet, data.attributes[1].value],
                                 yrProfitshare: [...previousState.yrProfitshare, value * 12],
-                                yrFreebet: [...previousState.yrFreebet, calculateYearlySpecialBet(data.robot_json.attributes[1].value)]
+                                yrFreebet: [...previousState.yrFreebet, calculateYearlySpecialBet(data.attributes[1].value)]
                             }))
                             return value;
                         })
@@ -44,9 +56,9 @@ export function TrackerChild({id, totals, setTotals}) {
                     setRobotFull(data);
                     setTotals(previousState => ({
                         profitshare: [...previousState.profitshare, value],
-                        freebet: [...previousState.freebet, data.robot_json.attributes[8].value],
-                        yrProfitshare: [...previousState.yrProfitshare, calculateYearlyShare(100, data.robot_json.attributes[10].value, value)],
-                        yrFreebet: [...previousState.yrFreebet, calculateYearlyFreebet(50, data.robot_json.attributes[8].value)]
+                        freebet: [...previousState.freebet, data.attributes[8].value],
+                        yrProfitshare: [...previousState.yrProfitshare, calculateYearlyShare(100, data.attributes[10].value, value)],
+                        yrFreebet: [...previousState.yrFreebet, calculateYearlyFreebet(50, data.attributes[8].value)]
                     }))
                     setLoaded(true);
                 }
@@ -54,7 +66,7 @@ export function TrackerChild({id, totals, setTotals}) {
     }, [id, setTotals])
 
     if (!loaded) { return <OtherLoader /> }
-    const robot = robotFull.robot_json;
+    const robot = robotFull;
     if (robot === undefined) {
         return <TrackNotFound id={id} />
     }
