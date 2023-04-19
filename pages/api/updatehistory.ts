@@ -7,12 +7,11 @@ export default async function handler(req, res) {
     const record = await pb.collection("total_data").getFullList()
     let total = 0;
     await totalShareLists()
-    .then((response) => response.json())
-    .then((data) => {
-        data.forEach((item) => {
-            total += item[2] * item[3];
+        .then((data) => {
+            data.forEach((item) => {
+                total += item[2] * item[3];
+            })
         })
-    })
     let todayDate = new Date().toISOString().slice(0, 10);
     const myOtherLabels = []
     const myOtherData = []
