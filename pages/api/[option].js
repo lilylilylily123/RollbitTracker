@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     if (!option) {
         return res.status(400).json({ err: 'No option provided' });
     }
-    const authData = await pb.admins.authWithPassword(process.env.DB_USER, process.env.DB_PASS);
+    const authData = await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
     let data = await pb.collection('amount_bots').getFirstListItem(`sport="${option}"`)
         .then(async (record) => {
             return record;
@@ -16,5 +16,5 @@ export default async function handler(req, res) {
         })
     data = JSON.parse(JSON.stringify(data.historical_json));
 
-    return res.status(200).json({ data });
+    res.status(200).json({ data });
 }
