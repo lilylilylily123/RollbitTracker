@@ -2,7 +2,7 @@ import Pocketbase from "pocketbase";
 
 const pb = new Pocketbase("https://rollbit.pockethost.io")
 export default async function handler(req, res) {
-    await pb.admins.authWithPassword(process.env.DB_USER, process.env.DB_PASS);
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
     const record = await pb.collection("total_data").getFullList()
     let total = 0;
     await fetch('http://localhost:3000/api/total')
