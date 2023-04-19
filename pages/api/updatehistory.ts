@@ -1,14 +1,15 @@
 import Pocketbase from "pocketbase";
+import {totalShareLists} from "./total";
 
 const pb = new Pocketbase("https://rollbit.pockethost.io")
 export default async function handler(req, res) {
     await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
     const record = await pb.collection("total_data").getFullList()
     let total = 0;
-    await fetch('http://localhost:3000/api/total')
+    await totalShareLists()
     .then((response) => response.json())
     .then((data) => {
-        data.uniqueArray.forEach((item) => {
+        data.forEach((item) => {
             total += item[2] * item[3];
         })
     })
