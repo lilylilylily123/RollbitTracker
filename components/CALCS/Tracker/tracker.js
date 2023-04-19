@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import {useEffect, useState} from "react";
-import {getData, getValue, letsTryAgain} from "/pages/api/robots/[id]";
 import Image from "next/image";
 import OtherLoader from "/components/OTHER/OtherLoader/OtherLoader";
 import TrackNotFound from "/components/OTHER/TrackNotFound/TrackNotFound";

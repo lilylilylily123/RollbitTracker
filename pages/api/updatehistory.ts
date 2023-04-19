@@ -26,5 +26,5 @@ export default async function handler(req, res) {
         myData[label] = myOtherData[index];
     });
     const updatedRecord = await pb.collection("total_data").update(record[0].id, {historical: myData})
-    res.status(200).json(updatedRecord);
+    return res.status(200).json(updatedRecord);
 }
