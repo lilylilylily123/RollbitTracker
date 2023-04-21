@@ -59,7 +59,8 @@ export default function TotalSportshares() {
             return await response.json();
         };
         fetchTotal().then((r) => {
-            const arr = r.thing;
+            console.log(r)
+            const arr = r.uniqueArray;
             const labs = arr.map((a) => a[0]);
             setTotalLabels(labs);
             const amounts = arr.map((a) => a[1]);
