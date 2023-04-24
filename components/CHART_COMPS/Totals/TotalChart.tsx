@@ -52,12 +52,12 @@ export default function TotalChart() {
                     <div className={styles.card} key={d[0]}>
                         <ul className={styles.list}>
                             <h1 className={styles.one}>{d[0]}</h1>
-                            <h2 className={styles.two} style={{color: parseFloat(((((d[3] - d[4]) / Math.abs(d[4])) * 100)).toFixed(2)) >= 0 ? "green" : "red"}}>{parseFloat(((((d[3] - d[4]) / Math.abs(d[4])) * 100)).toFixed(2))}%</h2>
-                            <h2 className={styles.two} style={{color: parseFloat((((d[3] -  d[4]))).toFixed(2)) >= 0 ? "green" : "red"}}>${parseFloat(((d[3] - d[4])).toFixed(2))}</h2>
-                            <h2 className={styles.three} style={{color: parseFloat(((((d[5] - d[4]) / Math.abs(d[4])) * 100)).toFixed(2)) >= 0 ? "green" : "red"}}>{parseFloat(((((d[5]- d[4]) / Math.abs(d[4]) * 100)).toFixed(2)))}%</h2>
-                            <h2 className={styles.three} style={{color: parseFloat((((d[5] - d[4]))).toFixed(2)) >= 0 ? "green" : "red"}}>${parseFloat(((d[5] - d[4])).toFixed(2))}</h2>
-                            <h2 className={styles.four}>{d[2].toFixed(2)}</h2>
-                            <h2 className={styles.five}>{d[1].toFixed(2)}</h2>
+                            <h2 className={styles.two} style={{color: parseFloat((((((d[3] * d[2]) - (d[4] * d[2])) / Math.abs(d[4] * d[1])) * 100)).toFixed(2)) >= 0 ? "green" : "red"}}>{parseFloat((((((d[3] * d[2]) - (d[4] * d[2])) / Math.abs(d[4] * d[2])) * 100)).toFixed(2))}%</h2>
+                            <h2 className={styles.two} style={{color: parseFloat(((((d[3] * d[2]) -  (d[4] * d[2])))).toFixed(2)) >= 0 ? "green" : "red"}}>${parseFloat(((((d[3] * d[2]) -  (d[4] * d[2])))).toFixed(2))}</h2>
+                            <h2 className={styles.three} style={{color: parseFloat((((((d[4] * d[2]) - (d[5] * d[2])) / Math.abs(d[5] * d[1])) * 100)).toFixed(2)) >= 0 ? "green" : "red"}}>{parseFloat((((((d[4] * d[2]) - (d[5] * d[2])) / Math.abs(d[5] * d[2]) * 100)).toFixed(2)))}%</h2>
+                            <h2 className={styles.three} style={{color: parseFloat(((((d[4] * d[2]) - (d[5] * d[2])))).toFixed(2)) >= 0 ? "green" : "red"}}>${parseFloat((((d[4] * d[2]) - (d[5] * d[2]))).toFixed(2))}</h2>
+                            <h2 className={styles.four}>{d[1].toFixed(2)}</h2>
+                            <h2 className={styles.five}>{d[2].toFixed(2)}</h2>
                             <h2 className={styles.six}>${d[3].toFixed(2)}</h2>
                             <h2 className={styles.seven}>${(d[2] * d[3]).toFixed(2)}</h2>
                         </ul>
