@@ -25,7 +25,7 @@ export default async function handler(request, response) {
                     "robot_id": value,
                     "sport": data.sportsbot.traits.sport,
                 }
-                await pb.collection('testing').create(dataDB);
+                await pb.collection('robot_historical').create(dataDB);
             })
         await timer(20 * 1000)
     }
@@ -36,12 +36,12 @@ export default async function handler(request, response) {
 }
 
 async function deleteHistory(id) {
-    await pb.collection('testing').getFirstListItem('robot_id = ' + id, {
+    await pb.collection('robot_historical').getFirstListItem('robot_id = ' + id, {
             // limit: 1,
         }
     )
         .then(async (records) => {
-            await pb.collection('testing').delete(records.id)
+            await pb.collection('robot_historical').delete(records.id)
         })
         .catch(async (err) => {
             console.log("robot_id " + id + " not found in robot_historical")
