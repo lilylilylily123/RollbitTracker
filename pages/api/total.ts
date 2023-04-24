@@ -36,7 +36,7 @@ export async function totalShareLists() {
     const record4 = await pb.collection('sevendayps').getFullList()
 
     const thing = []
-    record.forEach((item) => {
+     record.forEach((item) => {
         record2.forEach((item2) => {
                 record3.forEach((item3) => {
                     record4.forEach((item4) => {
