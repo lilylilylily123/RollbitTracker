@@ -38,16 +38,17 @@ export default async function handler(request, response) {
     response.status(200).json({timefordata: time * 0.001 + "s"});
 }
 
-async function deleteHistory(id, pb) {
+async function deleteHistory(id) {
     await pb.collection('robot_historical').getList(1, 50, {
         filter: 'robot_id = ' + id,
-        }
-    )
+    })
         .then(async (records) => {
-            await pb.collection('robot_historical').delete(records.id)
+            for (const record of records.items) {
+                await pb.collection('robot_historical').delete(record.id)
+            }
         })
         .catch(async (err) => {
-            console.log("robot_id " + id + " not found in robot_historical")
+            console.log("robot_id " + id + " not found in robot_historical, error: " + err)
         });
 }
 

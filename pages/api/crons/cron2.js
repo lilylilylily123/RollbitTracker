@@ -36,7 +36,7 @@ async function deleteHistory(id) {
         filter: 'robot_id = ' + id,
     })
         .then(async (records) => {
-            for (const record of records) {
+            for (const record of records.items) {
                 await pb.collection('robot_historical').delete(record.id)
             }
         })
