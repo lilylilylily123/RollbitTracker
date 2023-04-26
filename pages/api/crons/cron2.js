@@ -1,11 +1,7 @@
-import PocketBase from "pocketbase";
-const pb = new PocketBase('https://rollbit.pockethost.io');
-
+import {pb} from "/pocketbase"
 
 export default async function handler(request, response) {
     const start = new Date();
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
-    pb.autoCancellation(false)
     const arr = [
         104, 1052, 1050, 115, 11, 1122, 1179, 1086, 1922,
         1116, 1075, 1083, 1141
@@ -36,15 +32,16 @@ export default async function handler(request, response) {
 }
 
 async function deleteHistory(id) {
-    await pb.collection('robot_historical').getFirstListItem('robot_id = ' + id, {
-            // limit: 1,
-        }
-    )
+    await pb.collection('robot_historical').getList(1, 50, {
+        filter: 'robot_id = ' + id,
+    })
         .then(async (records) => {
-            await pb.collection('robot_historical').delete(records.id)
+            for (const record of records) {
+                await pb.collection('robot_historical').delete(record.id)
+            }
         })
         .catch(async (err) => {
-            console.log("robot_id " + id + " not found in robot_historical")
+            console.log("robot_id " + id + " not found in robot_historical, error: " + err)
         });
 }
 

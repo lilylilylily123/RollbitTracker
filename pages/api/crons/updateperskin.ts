@@ -1,10 +1,8 @@
-import Pocketbase from "pocketbase";
-const pb = new Pocketbase("https://rollbit.pockethost.io");
+import {pb} from "../../../pocketbase"
 
 export default async function handler(req, res) {
-    await pb.autoCancellation(false)
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123")
     const t0 = new Date().getTime()
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
     const record = await pb.collection("amount_bots").getFullList()
     const record2 = await pb.collection("robot_historical").getFullList()
     let todayDate = new Date().toISOString().slice(0, 10);

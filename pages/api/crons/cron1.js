@@ -1,10 +1,6 @@
-import PocketBase from "pocketbase";
-const pb = new PocketBase('https://rollbit.pockethost.io');
-
+import {pb} from "/pocketbase"
 export default async function handler(request, response) {
     const start = new Date();
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
-    pb.autoCancellation(false)
     const arr = [
         8009,
         7166, 1212, 1133, 1349, 1142, 2161, 1249,
@@ -43,8 +39,8 @@ export default async function handler(request, response) {
 }
 
 async function deleteHistory(id, pb) {
-    await pb.collection('robot_historical').getFirstListItem('robot_id = ' + id, {
-            // limit: 1,
+    await pb.collection('robot_historical').getList(1, 50, {
+        filter: 'robot_id = ' + id,
         }
     )
         .then(async (records) => {
