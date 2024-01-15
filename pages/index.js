@@ -40,7 +40,7 @@ export default function Home() {
           </div>
 
             <div data-tooltip-html={tooltip2} data-tooltip-offset={20} data-tooltip-id={"promo"} className={styles.promocode}>
-                <h1>Code: <span>ROLLTRACK</span> & /tip mmikebike09</h1>
+                <h1>Code: <span>LEARNLIFE</span> & /tip mmikebike09</h1>
             </div>
             <Tooltip id={"promo"} style={
                 {backgroundColor: "#1F202A", color: "white", border: "none", borderRadius: "18px", padding: "10px"}

@@ -7,7 +7,7 @@ Pocketbase served at rollbit.pockethost.io
 <br>
 create a .env with pb credentials
 <br>
-### (username = rollbit.tracker@gmail.com, password = jacksonMike123)
+### (username = rollbit.tracker@gmail.com, password = examplePassword)
 <br>
 navigate to `python_api` folder and <br>
 `source venv/bin/activate`

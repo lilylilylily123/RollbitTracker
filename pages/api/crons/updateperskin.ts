@@ -1,7 +1,7 @@
 import {pb} from "../../../pocketbase"
 
 export default async function handler(req, res) {
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123")
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword")
     const t0 = new Date().getTime()
     const record = await pb.collection("amount_bots").getFullList()
     const record2 = await pb.collection("robot_historical").getFullList()

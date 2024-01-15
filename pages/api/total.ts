@@ -3,7 +3,7 @@ const pb = new Pocketbase("https://rollbit.pockethost.io")
 pb.autoCancellation(false)
 import {AmountBots} from "../../misc/AmountBots"
 export default async function handler(req, res) {
-    const authData = await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
+    const authData = await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword");
     const record = await pb.collection("amount_bots").getFullList()
     const record2 = await pb.collection("robot_historical").getFullList()
     const record3 = await pb.collection('yesterday_ps').getFullList()
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 }
 
 export async function totalShareLists() {
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword");
     await pb.autoCancellation(false)
     const record = await pb.collection("amount_bots").getFullList()
     const record2 = await pb.collection("robot_historical").getFullList()

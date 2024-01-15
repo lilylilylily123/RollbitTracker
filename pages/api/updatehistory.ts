@@ -3,7 +3,7 @@ import {totalShareLists} from "./total";
 
 const pb = new Pocketbase("https://rollbit.pockethost.io")
 export default async function handler(req, res) {
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword");
     const record = await pb.collection("total_data").getFullList()
     let total = 0;
     await totalShareLists()

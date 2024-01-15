@@ -18,7 +18,7 @@ async function createThisBot(id) {
         "robot_json": data,
         "robot_id": id
     }
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword");
     const record = pb.collection('robots_v2').create(robot_json)
         .then(async (record) => {
             return record;
@@ -27,7 +27,7 @@ async function createThisBot(id) {
 }
 
 export async function letsTryAgain(id) {
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword");
     const now = new Date();
     const record = await pb.collection('robots_v2').getFirstListItem('robot_id = ' + id)
         .then(async (record) => {
@@ -47,7 +47,7 @@ export async function letsTryAgain(id) {
 }
 
 export async function getValue(sport) {
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword");
     const record = await pb.collection('robot_historical').getFirstListItem(`sport="${sport}"`)
         .then(async (record) => {
             return record;

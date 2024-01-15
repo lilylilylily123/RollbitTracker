@@ -4,7 +4,7 @@ const pb = new Pocketbase('https://rollbit.pockethost.io')
 export default async function handler(req, res) {
     const sport  = req.query.option
     pb.autoCancellation(false)
-    await pb.admins.authWithPassword("cfrugal11@gmail.com", "jacksonMike123");
+    await pb.admins.authWithPassword("cfrugal11@gmail.com", "examplePassword");
     const record = await pb.collection('robot_historical').getFirstListItem(`sport="${sport}"`)
         .then(async (record) => {
             return record;
